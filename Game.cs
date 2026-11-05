@@ -18,6 +18,7 @@ namespace haiandro
         public Game()
         {
             InitializeComponent();
+            Result_Table.Visible = true;
             d.Shuffle();
             d.Card_kure();
             card_display();
@@ -62,6 +63,7 @@ namespace haiandro
             }
             else
             {
+                label1.Text = "0.0";
                 Answer_label.TextChanged -= battle;
                 Console.WriteLine("時間切れ");
             }
@@ -73,7 +75,7 @@ namespace haiandro
             string image_name = d.Card_kure();
             Console.WriteLine(image_name);
             Image img = Properties.Resources.ResourceManager.GetObject(image_name) as Image;
-            pictureBox1.Image = img;
+            Left_Card.Image = img;
             card_num1.Text = d.What_number();
         }
 
@@ -83,7 +85,6 @@ namespace haiandro
             {
                 // デザイナーで設定した (Name) を取得
                 string controlName = control.Text;
-
                 Answer_label.Text = controlName;
             }
         }
@@ -96,25 +97,85 @@ namespace haiandro
 
             //アニメーション用変数宣言
             int x = 450;
-            vs_label.Location = new Point(x, 30);
-            Console.WriteLine(vs_label.Location.X);
-            vs_label.Visible = true;
-            while (vs_label.Location.X > 150)
+            info_label.Location = new Point(x, 30);
+            Console.WriteLine(info_label.Location.X);
+            info_label.Visible = true;
+
+            //アニメーション
+            while (info_label.Location.X > 150)
             {
                 await Task.Delay(10);
-                vs_label.Location = new Point(x, 30);
+                info_label.Location = new Point(x, 30);
+
                 x -= 15;
             }
 
             await Task.Delay(1500);
 
-            while (vs_label.Location.X > -150)
+            while (info_label.Location.X > -150)
             {
                 await Task.Delay(10);
-                vs_label.Location = new Point(x, 30);
+                info_label.Location = new Point(x, 30);
                 x -= 15;
             }
 
+            await Task.Delay(1000);
+
+            //トランプをめくるアニメーション
+            int Width = 150;
+
+            while (Right_Card.Size.Width > 0)
+            {
+                Width -= 10;
+                await Task.Delay(20);
+                Right_Card.Size = new Size(Width, 220);
+            }
+            string image_name = d.Card_kure();
+            Console.WriteLine(image_name);
+            Image img = Properties.Resources.ResourceManager.GetObject(image_name) as Image;
+            Right_Card.Image = img;
+
+            while (Right_Card.Size.Width < 150)
+            {
+                Width += 10;
+                await Task.Delay(20);
+                Right_Card.Size = new Size(Width, 220);
+            }
+
+            card_num2.Text = d.What_number();
+
+            //勝ち負け表示
+            Result_Table.Visible = true;
+            Result_Table.BringToFront();
+            Result_img.Visible = true;
+
+            Result_img.Size = new Size(120, 0);
+            Width = 0;
+
+            while (Result_img.Size.Height < 65)
+            {
+                Width += 5;
+                await Task.Delay(30);
+                Result_img.Size = new Size(120, Width);
+            }
+
+            await Task.Delay(2000);
+
+            while (Result_img.Size.Height > 0)
+            {
+                Width -= 5;
+                await Task.Delay(30);
+                Result_img.Size = new Size(120, Width);
+            }
+
+            if (int.Parse(card_num1.Text)>int.Parse(card_num2.Text))
+            {
+                
+            }
+        }
+
+        private void Result_display(char Check)
+        {
 
         }
     }

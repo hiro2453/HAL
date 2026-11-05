@@ -31,26 +31,31 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             High_button = new Button();
             Low_button = new Button();
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
+            Left_Card = new PictureBox();
             Answer_label = new Label();
             card_num1 = new Label();
             button3 = new Button();
             card_num2 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            Right_Card = new PictureBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             progressBar1 = new ProgressBar();
             label1 = new Label();
             Time = new TableLayoutPanel();
             label2 = new Label();
-            vs_label = new Label();
+            info_label = new Label();
             Timer_table = new TableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            label3 = new Label();
+            Result_img = new PictureBox();
+            Result_Table = new TableLayoutPanel();
+            ((System.ComponentModel.ISupportInitialize)Left_Card).BeginInit();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Right_Card).BeginInit();
             tableLayoutPanel2.SuspendLayout();
             Time.SuspendLayout();
             Timer_table.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Result_img).BeginInit();
+            Result_Table.SuspendLayout();
             SuspendLayout();
             // 
             // High_button
@@ -80,27 +85,16 @@
             Low_button.UseVisualStyleBackColor = true;
             Low_button.Click += button_Click;
             // 
-            // pictureBox1
+            // Left_Card
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(15, 45);
-            pictureBox1.Margin = new Padding(15, 3, 15, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(150, 220);
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(195, 45);
-            pictureBox2.Margin = new Padding(15, 3, 15, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(150, 220);
-            pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
-            pictureBox2.TabIndex = 3;
-            pictureBox2.TabStop = false;
+            Left_Card.Image = (Image)resources.GetObject("Left_Card.Image");
+            Left_Card.Location = new Point(15, 45);
+            Left_Card.Margin = new Padding(15, 3, 15, 3);
+            Left_Card.Name = "Left_Card";
+            Left_Card.Size = new Size(150, 220);
+            Left_Card.SizeMode = PictureBoxSizeMode.AutoSize;
+            Left_Card.TabIndex = 2;
+            Left_Card.TabStop = false;
             // 
             // Answer_label
             // 
@@ -154,12 +148,12 @@
             tableLayoutPanel1.AutoSize = true;
             tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(card_num1, 0, 0);
             tableLayoutPanel1.Controls.Add(card_num2, 1, 0);
-            tableLayoutPanel1.Controls.Add(pictureBox1, 0, 1);
-            tableLayoutPanel1.Controls.Add(pictureBox2, 1, 1);
+            tableLayoutPanel1.Controls.Add(Left_Card, 0, 1);
+            tableLayoutPanel1.Controls.Add(Right_Card, 1, 1);
             tableLayoutPanel1.Location = new Point(32, 87);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
@@ -167,6 +161,18 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.Size = new Size(360, 268);
             tableLayoutPanel1.TabIndex = 8;
+            // 
+            // Right_Card
+            // 
+            Right_Card.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            Right_Card.Image = (Image)resources.GetObject("Right_Card.Image");
+            Right_Card.Location = new Point(195, 45);
+            Right_Card.Margin = new Padding(15, 3, 15, 3);
+            Right_Card.Name = "Right_Card";
+            Right_Card.Size = new Size(150, 220);
+            Right_Card.SizeMode = PictureBoxSizeMode.StretchImage;
+            Right_Card.TabIndex = 3;
+            Right_Card.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
@@ -233,16 +239,17 @@
             label2.Text = "秒";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // vs_label
+            // info_label
             // 
-            vs_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            vs_label.AutoSize = true;
-            vs_label.Font = new Font("HGP創英角ｺﾞｼｯｸUB", 12F, FontStyle.Regular, GraphicsUnit.Millimeter, 128);
-            vs_label.Location = new Point(150, 30);
-            vs_label.Name = "vs_label";
-            vs_label.Size = new Size(125, 46);
-            vs_label.TabIndex = 14;
-            vs_label.Text = "勝負!";
+            info_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            info_label.AutoSize = true;
+            info_label.Font = new Font("HGP創英角ｺﾞｼｯｸUB", 12F, FontStyle.Regular, GraphicsUnit.Millimeter, 128);
+            info_label.Location = new Point(150, 30);
+            info_label.Name = "info_label";
+            info_label.Size = new Size(125, 46);
+            info_label.TabIndex = 14;
+            info_label.Text = "勝負!";
+            info_label.Visible = false;
             // 
             // Timer_table
             // 
@@ -259,34 +266,78 @@
             Timer_table.Size = new Size(366, 62);
             Timer_table.TabIndex = 15;
             // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Font = new Font("Meiryo UI", 8F, FontStyle.Bold, GraphicsUnit.Millimeter);
+            label3.Location = new Point(195, -50);
+            label3.Name = "label3";
+            label3.RightToLeft = RightToLeft.No;
+            label3.Size = new Size(43, 40);
+            label3.TabIndex = 16;
+            label3.Text = ">";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            label3.Visible = false;
+            // 
+            // Result_img
+            // 
+            Result_img.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            Result_img.Image = Properties.Resources.WIN;
+            Result_img.Location = new Point(120, 3);
+            Result_img.Margin = new Padding(120, 3, 120, 3);
+            Result_img.Name = "Result_img";
+            Result_img.Size = new Size(120, 71);
+            Result_img.SizeMode = PictureBoxSizeMode.StretchImage;
+            Result_img.TabIndex = 17;
+            Result_img.TabStop = false;
+            Result_img.Visible = false;
+            // 
+            // Result_Table
+            // 
+            Result_Table.ColumnCount = 1;
+            Result_Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            Result_Table.Controls.Add(Result_img, 0, 0);
+            Result_Table.Location = new Point(32, 361);
+            Result_Table.Name = "Result_Table";
+            Result_Table.RowCount = 1;
+            Result_Table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            Result_Table.Size = new Size(360, 77);
+            Result_Table.TabIndex = 18;
+            Result_Table.Visible = false;
+            // 
             // Game
             // 
             AutoScaleDimensions = new SizeF(7F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(434, 531);
-            Controls.Add(vs_label);
+            Controls.Add(label3);
+            Controls.Add(info_label);
             Controls.Add(Timer_table);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(button3);
             Controls.Add(Answer_label);
+            Controls.Add(Result_Table);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Game";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ゲーム画面";
             TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Left_Card).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Right_Card).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             Time.ResumeLayout(false);
             Time.PerformLayout();
             Timer_table.ResumeLayout(false);
             Timer_table.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Result_img).EndInit();
+            Result_Table.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -295,8 +346,7 @@
 
         private Button High_button;
         private Button Low_button;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
+        private PictureBox Left_Card;
         private Label Answer_label;
         private Label card_num1;
         private Button button3;
@@ -307,7 +357,12 @@
         private Label label1;
         private TableLayoutPanel Time;
         private Label label2;
-        private Label vs_label;
+        private Label info_label;
         private TableLayoutPanel Timer_table;
+        private PictureBox Right_Card;
+        private Label label3;
+        private PictureBox pictureBox1;
+        private TableLayoutPanel Result_Table;
+        private PictureBox Result_img;
     }
 }
