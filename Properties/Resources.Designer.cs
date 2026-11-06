@@ -22,7 +22,7 @@ namespace haiandro.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace haiandro.Properties {
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("haiandro.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace haiandro.Properties {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,17 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_back {
+        public static System.Drawing.Bitmap A_lose {
+            get {
+                object obj = ResourceManager.GetObject("A_lose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        public static System.Drawing.Bitmap card_back {
             get {
                 object obj = ResourceManager.GetObject("card_back", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +83,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_0 {
+        public static System.Drawing.Bitmap card_club_0 {
             get {
                 object obj = ResourceManager.GetObject("card_club_0", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +93,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_1 {
+        public static System.Drawing.Bitmap card_club_1 {
             get {
                 object obj = ResourceManager.GetObject("card_club_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +103,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_11 {
+        public static System.Drawing.Bitmap card_club_11 {
             get {
                 object obj = ResourceManager.GetObject("card_club_11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +113,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_12 {
+        public static System.Drawing.Bitmap card_club_12 {
             get {
                 object obj = ResourceManager.GetObject("card_club_12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +123,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_13 {
+        public static System.Drawing.Bitmap card_club_13 {
             get {
                 object obj = ResourceManager.GetObject("card_club_13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +133,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_2 {
+        public static System.Drawing.Bitmap card_club_2 {
             get {
                 object obj = ResourceManager.GetObject("card_club_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +143,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_3 {
+        public static System.Drawing.Bitmap card_club_3 {
             get {
                 object obj = ResourceManager.GetObject("card_club_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -143,7 +153,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_4 {
+        public static System.Drawing.Bitmap card_club_4 {
             get {
                 object obj = ResourceManager.GetObject("card_club_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +163,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_5 {
+        public static System.Drawing.Bitmap card_club_5 {
             get {
                 object obj = ResourceManager.GetObject("card_club_5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +173,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_6 {
+        public static System.Drawing.Bitmap card_club_6 {
             get {
                 object obj = ResourceManager.GetObject("card_club_6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,7 +183,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_7 {
+        public static System.Drawing.Bitmap card_club_7 {
             get {
                 object obj = ResourceManager.GetObject("card_club_7", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -183,7 +193,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_8 {
+        public static System.Drawing.Bitmap card_club_8 {
             get {
                 object obj = ResourceManager.GetObject("card_club_8", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -193,7 +203,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_club_9 {
+        public static System.Drawing.Bitmap card_club_9 {
             get {
                 object obj = ResourceManager.GetObject("card_club_9", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -203,7 +213,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_1 {
+        public static System.Drawing.Bitmap card_diamond_1 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -213,7 +223,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_10 {
+        public static System.Drawing.Bitmap card_diamond_10 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_10", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -223,7 +233,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_11 {
+        public static System.Drawing.Bitmap card_diamond_11 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -233,7 +243,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_12 {
+        public static System.Drawing.Bitmap card_diamond_12 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -243,7 +253,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_13 {
+        public static System.Drawing.Bitmap card_diamond_13 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -253,7 +263,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_2 {
+        public static System.Drawing.Bitmap card_diamond_2 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -263,7 +273,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_3 {
+        public static System.Drawing.Bitmap card_diamond_3 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -273,7 +283,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_4 {
+        public static System.Drawing.Bitmap card_diamond_4 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -283,7 +293,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_5 {
+        public static System.Drawing.Bitmap card_diamond_5 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -293,7 +303,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_6 {
+        public static System.Drawing.Bitmap card_diamond_6 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -303,7 +313,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_7 {
+        public static System.Drawing.Bitmap card_diamond_7 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_7", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -313,7 +323,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_8 {
+        public static System.Drawing.Bitmap card_diamond_8 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_8", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -323,7 +333,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_diamond_9 {
+        public static System.Drawing.Bitmap card_diamond_9 {
             get {
                 object obj = ResourceManager.GetObject("card_diamond_9", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -333,7 +343,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_1 {
+        public static System.Drawing.Bitmap card_heart_1 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -343,7 +353,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_10 {
+        public static System.Drawing.Bitmap card_heart_10 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_10", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -353,7 +363,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_11 {
+        public static System.Drawing.Bitmap card_heart_11 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -363,7 +373,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_12 {
+        public static System.Drawing.Bitmap card_heart_12 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -373,7 +383,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_13 {
+        public static System.Drawing.Bitmap card_heart_13 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -383,7 +393,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_2 {
+        public static System.Drawing.Bitmap card_heart_2 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -393,7 +403,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_3 {
+        public static System.Drawing.Bitmap card_heart_3 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -403,7 +413,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_4 {
+        public static System.Drawing.Bitmap card_heart_4 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -413,7 +423,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_5 {
+        public static System.Drawing.Bitmap card_heart_5 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -423,7 +433,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_6 {
+        public static System.Drawing.Bitmap card_heart_6 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -433,7 +443,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_7 {
+        public static System.Drawing.Bitmap card_heart_7 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_7", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -443,7 +453,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_8 {
+        public static System.Drawing.Bitmap card_heart_8 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_8", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -453,7 +463,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_heart_9 {
+        public static System.Drawing.Bitmap card_heart_9 {
             get {
                 object obj = ResourceManager.GetObject("card_heart_9", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -463,7 +473,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_1 {
+        public static System.Drawing.Bitmap card_spade_1 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -473,7 +483,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_10 {
+        public static System.Drawing.Bitmap card_spade_10 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_10", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -483,7 +493,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_11 {
+        public static System.Drawing.Bitmap card_spade_11 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -493,7 +503,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_12 {
+        public static System.Drawing.Bitmap card_spade_12 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -503,7 +513,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_13 {
+        public static System.Drawing.Bitmap card_spade_13 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -513,7 +523,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_2 {
+        public static System.Drawing.Bitmap card_spade_2 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -523,7 +533,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_3 {
+        public static System.Drawing.Bitmap card_spade_3 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -533,7 +543,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_4 {
+        public static System.Drawing.Bitmap card_spade_4 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -543,7 +553,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_5 {
+        public static System.Drawing.Bitmap card_spade_5 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -553,7 +563,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_6 {
+        public static System.Drawing.Bitmap card_spade_6 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -563,7 +573,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_7 {
+        public static System.Drawing.Bitmap card_spade_7 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_7", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -573,7 +583,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_8 {
+        public static System.Drawing.Bitmap card_spade_8 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_8", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -583,7 +593,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap card_spade_9 {
+        public static System.Drawing.Bitmap card_spade_9 {
             get {
                 object obj = ResourceManager.GetObject("card_spade_9", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -593,7 +603,17 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap LOSE {
+        public static System.Drawing.Bitmap DRAW {
+            get {
+                object obj = ResourceManager.GetObject("DRAW", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        public static System.Drawing.Bitmap LOSE {
             get {
                 object obj = ResourceManager.GetObject("LOSE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -603,7 +623,7 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap WIN {
+        public static System.Drawing.Bitmap WIN {
             get {
                 object obj = ResourceManager.GetObject("WIN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
