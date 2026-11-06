@@ -34,5 +34,17 @@ namespace haiandro.Properties {
                 this["deck_set"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool A_Strong {
+            get {
+                return ((bool)(this["A_Strong"]));
+            }
+            set {
+                this["A_Strong"] = value;
+            }
+        }
     }
 }
