@@ -1,5 +1,4 @@
-﻿using haiandro.Card;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +14,9 @@ namespace haiandro
     {
         Deck d = new Deck();
         bool Answer = false;
+        bool High = false;
+        bool Low = false;
+
         public Game()
         {
             InitializeComponent();
@@ -46,7 +48,7 @@ namespace haiandro
                 await Task.Delay(100);
                 value = progressBar1.Value.ToString();
                 test = value.ToCharArray();
-                if (progressBar1.Value <10)
+                if (progressBar1.Value < 10)
                 {
                     text = $"0.{test[0]}";
                 }
@@ -63,11 +65,15 @@ namespace haiandro
             }
             else
             {
+                await Task.Delay(100);
                 label1.Text = "0.0";
                 Answer_label.TextChanged -= battle;
+                progressBar1.Visible = false;
+                Answer_label.Text = "時間切れ";
+                Action_table.Visible = false;
                 Console.WriteLine("時間切れ");
             }
-            Timer_table.Visible = false;
+
         }
 
         private void card_display()
@@ -85,6 +91,12 @@ namespace haiandro
             {
                 // デザイナーで設定した (Name) を取得
                 string controlName = control.Text;
+                switch (controlName)
+                {
+                    case "High": High = true; break;
+                    case "Low": Low = true; break;
+                }
+
                 Answer_label.Text = controlName;
             }
         }
@@ -124,10 +136,10 @@ namespace haiandro
             //トランプをめくるアニメーション
             int Width = 150;
 
-            while (Right_Card.Size.Width > 0)
+            while (Right_Card.Size.Width > 5)
             {
                 Width -= 10;
-                await Task.Delay(20);
+                await Task.Delay(15);
                 Right_Card.Size = new Size(Width, 220);
             }
             string image_name = d.Card_kure();
@@ -138,19 +150,64 @@ namespace haiandro
             while (Right_Card.Size.Width < 150)
             {
                 Width += 10;
-                await Task.Delay(20);
+                await Task.Delay(15);
                 Right_Card.Size = new Size(Width, 220);
             }
 
             card_num2.Text = d.What_number();
 
             //勝ち負け表示
+            if (int.Parse(card_num1.Text) == int.Parse(card_num2.Text))
+            {
+                await Result_display('d');
+            }
+
+            if (High == true)
+            {
+                if (int.Parse(card_num1.Text) < int.Parse(card_num2.Text))
+                {
+                    await Result_display('w');
+                }
+                else
+                {
+                    await Result_display('l');
+                }
+            }
+
+            if (Low == true)
+            {
+                if (int.Parse(card_num1.Text) > int.Parse(card_num2.Text))
+                {
+                    await Result_display('w');
+                }
+                else
+                {
+                    await Result_display('l');
+                }
+            }
+        }
+
+        private async Task Result_display(char Check)
+        {
             Result_Table.Visible = true;
             Result_Table.BringToFront();
+            switch (Check)
+            {
+                case 'w':
+                    Result_img.Image = Properties.Resources.WIN;
+                    break;
+                case 'l':
+                    Result_img.Image = Properties.Resources.LOSE;
+                    break;
+                case 'd':
+                    Result_img.Image = Properties.Resources.DRAW;
+                    break;
+            }
+            Result_img.Image = Properties.Resources.LOSE;
             Result_img.Visible = true;
 
             Result_img.Size = new Size(120, 0);
-            Width = 0;
+            int Width = 0;
 
             while (Result_img.Size.Height < 65)
             {
@@ -167,14 +224,9 @@ namespace haiandro
                 await Task.Delay(30);
                 Result_img.Size = new Size(120, Width);
             }
-
-            if (int.Parse(card_num1.Text)>int.Parse(card_num2.Text))
-            {
-                
-            }
         }
 
-        private void Result_display(char Check)
+        private void Game_Load(object sender, EventArgs e)
         {
 
         }
