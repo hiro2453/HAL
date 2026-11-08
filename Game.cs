@@ -161,32 +161,35 @@ namespace haiandro
             {
                 await Result_display('d');
             }
-
-            if (High == true)
+            else
             {
-                if (int.Parse(card_num1.Text) < int.Parse(card_num2.Text))
+                if (High == true)
                 {
-                    await Result_display('w');
+                    if (int.Parse(card_num1.Text) < int.Parse(card_num2.Text))
+                    {
+                        await Result_display('w');
+                    }
+                    else
+                    {
+                        await Result_display('l');
+                    }
                 }
-                else
+
+                if (Low == true)
                 {
-                    await Result_display('l');
+                    if (int.Parse(card_num1.Text) > int.Parse(card_num2.Text))
+                    {
+                        await Result_display('w');
+                    }
+                    else
+                    {
+                        await Result_display('l');
+                    }
                 }
             }
 
-            if (Low == true)
-            {
-                if (int.Parse(card_num1.Text) > int.Parse(card_num2.Text))
-                {
-                    await Result_display('w');
-                }
-                else
-                {
-                    await Result_display('l');
-                }
-            }
+            
         }
-
         private async Task Result_display(char Check)
         {
             Result_Table.Visible = true;
@@ -225,7 +228,6 @@ namespace haiandro
                 Result_img.Size = new Size(120, Width);
             }
         }
-
         private void Game_Load(object sender, EventArgs e)
         {
 
