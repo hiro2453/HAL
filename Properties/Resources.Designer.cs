@@ -63,16 +63,6 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        public static System.Drawing.Bitmap A_lose {
-            get {
-                object obj = ResourceManager.GetObject("A_lose", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
         public static System.Drawing.Bitmap card_back {
             get {
                 object obj = ResourceManager.GetObject("card_back", resourceCulture);
@@ -616,6 +606,26 @@ namespace haiandro.Properties {
         public static System.Drawing.Bitmap LOSE {
             get {
                 object obj = ResourceManager.GetObject("LOSE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        public static System.Drawing.Bitmap rei1 {
+            get {
+                object obj = ResourceManager.GetObject("rei1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        public static System.Drawing.Bitmap Rei2 {
+            get {
+                object obj = ResourceManager.GetObject("Rei2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

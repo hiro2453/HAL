@@ -286,7 +286,10 @@
   <data name="DRAW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\DRAW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="A_lose" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\A弱.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="rei1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Rei1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rei2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Rei2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
