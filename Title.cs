@@ -29,5 +29,13 @@ namespace haiandro
             }
             this.Show();
         }
+
+        private void Setting_button_Click(object sender, EventArgs e)
+        {
+            using (var Setting_window = new Setting())
+            {
+                Setting_window.ShowDialog();
+            }
+        }
     }
 }

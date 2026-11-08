@@ -72,6 +72,7 @@
             Setting_button.TabIndex = 2;
             Setting_button.Text = "設定";
             Setting_button.UseVisualStyleBackColor = true;
+            Setting_button.Click += Setting_button_Click;
             // 
             // menuStrip1
             // 
