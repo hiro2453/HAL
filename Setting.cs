@@ -15,65 +15,29 @@ namespace haiandro
         public Setting()
         {
             InitializeComponent();
+            A_check.Checked = Properties.Settings.Default.A_Strong ? true : false;
         }
 
-        private void InitializeComponent()
+        private void info_A(object sender, EventArgs e)
         {
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(Setting));
-            groupBox1 = new GroupBox();
-            pictureBox1 = new PictureBox();
-            checkBox1 = new CheckBox();
-            groupBox1.SuspendLayout();
-            ((ISupportInitialize)pictureBox1).BeginInit();
-            SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(pictureBox1);
-            groupBox1.Controls.Add(checkBox1);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(280, 190);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "カードの強さ";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(6, 52);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(265, 131);
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(6, 24);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(107, 22);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "Aを最強にする";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // Setting
-            // 
-            BackColor = SystemColors.Control;
-            ClientSize = new Size(304, 411);
-            Controls.Add(groupBox1);
-            MaximizeBox = false;
-            MinimizeBox = false;
-            Name = "Setting";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "設定画面";
-            TopMost = true;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            ((ISupportInitialize)pictureBox1).EndInit();
-            ResumeLayout(false);
+            StatusLabel.Text = "Aを最強にするか最弱にするかの設定です";
+        }
 
+        private void info_default(object sender, EventArgs e)
+        {
+            StatusLabel.Text = "ここに説明が表示されます";
+        }
+
+        private void A_change(object sender, EventArgs e)
+        {
+            if (A_check.Checked == true)
+            {
+                A_pic.Image = Properties.Resources.Rei2;
+            }
+            else
+            {
+                A_pic.Image = Properties.Resources.rei1;
+            }
         }
     }
 }

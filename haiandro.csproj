@@ -36,9 +36,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Setting.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
