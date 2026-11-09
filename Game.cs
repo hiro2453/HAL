@@ -25,17 +25,21 @@ namespace haiandro
             d.Card_kure();
             card_display();
             card_num1.Text = d.What_number();
-            label6.Text = (51 * Properties.Settings.Default.deck_set).ToString();
+            Battle_AllCount_label.Text = (51 * Properties.Settings.Default.deck_set).ToString();
             Start();
         }
 
         public async void Start()
         {
+            if (battle_Count_label.Text == Battle_AllCount_label.Text)
+            {
+                
+            }
             High = false;
             Low = false;
             Answer = false;
             await countdown();
-            label4.Text = d.What_AllCard();
+            battle_Count_label.Text = d.What_AllCard();
         }
 
         private async Task countdown()

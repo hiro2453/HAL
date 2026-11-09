@@ -49,10 +49,10 @@
             Result_img = new PictureBox();
             Result_Table = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
+            battle_kaime = new Label();
+            Battle_AllCount_label = new Label();
+            battle_Slash = new Label();
+            battle_Count_label = new Label();
             move_pic = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)Left_Card).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -323,10 +323,10 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel2.Controls.Add(label7, 3, 0);
-            tableLayoutPanel2.Controls.Add(label6, 2, 0);
-            tableLayoutPanel2.Controls.Add(label5, 1, 0);
-            tableLayoutPanel2.Controls.Add(label4, 0, 0);
+            tableLayoutPanel2.Controls.Add(battle_kaime, 3, 0);
+            tableLayoutPanel2.Controls.Add(Battle_AllCount_label, 2, 0);
+            tableLayoutPanel2.Controls.Add(battle_Slash, 1, 0);
+            tableLayoutPanel2.Controls.Add(battle_Count_label, 0, 0);
             tableLayoutPanel2.Location = new Point(12, 498);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
@@ -334,53 +334,53 @@
             tableLayoutPanel2.Size = new Size(156, 21);
             tableLayoutPanel2.TabIndex = 19;
             // 
-            // label7
+            // battle_kaime
             // 
-            label7.AutoSize = true;
-            label7.Dock = DockStyle.Left;
-            label7.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label7.Location = new Point(95, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(58, 21);
-            label7.TabIndex = 3;
-            label7.Text = "かいめ";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
+            battle_kaime.AutoSize = true;
+            battle_kaime.Dock = DockStyle.Left;
+            battle_kaime.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            battle_kaime.Location = new Point(95, 0);
+            battle_kaime.Name = "battle_kaime";
+            battle_kaime.Size = new Size(58, 21);
+            battle_kaime.TabIndex = 3;
+            battle_kaime.Text = "かいめ";
+            battle_kaime.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // Battle_AllCount_label
             // 
-            label6.AutoSize = true;
-            label6.Dock = DockStyle.Left;
-            label6.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label6.Location = new Point(52, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(37, 21);
-            label6.TabIndex = 2;
-            label6.Text = "530";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
+            Battle_AllCount_label.AutoSize = true;
+            Battle_AllCount_label.Dock = DockStyle.Left;
+            Battle_AllCount_label.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            Battle_AllCount_label.Location = new Point(52, 0);
+            Battle_AllCount_label.Name = "Battle_AllCount_label";
+            Battle_AllCount_label.Size = new Size(37, 21);
+            Battle_AllCount_label.TabIndex = 2;
+            Battle_AllCount_label.Text = "530";
+            Battle_AllCount_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // battle_Slash
             // 
-            label5.AutoSize = true;
-            label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label5.Location = new Point(28, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(18, 21);
-            label5.TabIndex = 1;
-            label5.Text = "/";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            battle_Slash.AutoSize = true;
+            battle_Slash.Dock = DockStyle.Fill;
+            battle_Slash.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            battle_Slash.Location = new Point(28, 0);
+            battle_Slash.Name = "battle_Slash";
+            battle_Slash.Size = new Size(18, 21);
+            battle_Slash.TabIndex = 1;
+            battle_Slash.Text = "/";
+            battle_Slash.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // battle_Count_label
             // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            label4.AutoSize = true;
-            label4.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label4.Location = new Point(3, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(19, 21);
-            label4.TabIndex = 0;
-            label4.Text = "1";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
+            battle_Count_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            battle_Count_label.AutoSize = true;
+            battle_Count_label.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            battle_Count_label.Location = new Point(3, 0);
+            battle_Count_label.Name = "battle_Count_label";
+            battle_Count_label.Size = new Size(19, 21);
+            battle_Count_label.TabIndex = 0;
+            battle_Count_label.Text = "1";
+            battle_Count_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // move_pic
             // 
@@ -457,10 +457,10 @@
         private TableLayoutPanel Result_Table;
         private PictureBox Result_img;
         private TableLayoutPanel tableLayoutPanel2;
-        private Label label7;
-        private Label label6;
-        private Label label5;
-        private Label label4;
+        private Label battle_kaime;
+        private Label Battle_AllCount_label;
+        private Label battle_Slash;
+        private Label battle_Count_label;
         private PictureBox move_pic;
     }
 }
