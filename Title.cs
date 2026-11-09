@@ -37,5 +37,12 @@ namespace haiandro
                 Setting_window.ShowDialog();
             }
         }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            var test = new teee();
+
+            await test.Test();
+        }
     }
 }

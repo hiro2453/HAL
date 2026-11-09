@@ -37,7 +37,10 @@
             Exit_ToolStrip = new ToolStripMenuItem();
             Help_ToolStrip = new ToolStripMenuItem();
             Information_ToolStrip = new ToolStripMenuItem();
+            button1 = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
             menuStrip1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -54,11 +57,11 @@
             // 
             Start_button.AutoSize = true;
             Start_button.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            Start_button.Location = new Point(161, 299);
+            Start_button.Location = new Point(3, 3);
             Start_button.Name = "Start_button";
-            Start_button.Size = new Size(102, 28);
+            Start_button.Size = new Size(94, 28);
             Start_button.TabIndex = 1;
-            Start_button.Text = "ゲームスタート";
+            Start_button.Text = "一人でプレイ";
             Start_button.UseVisualStyleBackColor = true;
             Start_button.Click += Start_button_Click;
             // 
@@ -66,7 +69,7 @@
             // 
             Setting_button.AutoSize = true;
             Setting_button.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            Setting_button.Location = new Point(161, 360);
+            Setting_button.Location = new Point(162, 360);
             Setting_button.Name = "Setting_button";
             Setting_button.Size = new Size(102, 28);
             Setting_button.TabIndex = 2;
@@ -118,13 +121,39 @@
             Information_ToolStrip.Text = "情報";
             Information_ToolStrip.Click += Information_ToolStrip_Click;
             // 
+            // button1
+            // 
+            button1.AutoSize = true;
+            button1.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            button1.Location = new Point(103, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 28);
+            button1.TabIndex = 4;
+            button1.Text = "AIとプレイ";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(button1, 1, 0);
+            tableLayoutPanel1.Controls.Add(Start_button, 0, 0);
+            tableLayoutPanel1.Location = new Point(109, 288);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(200, 38);
+            tableLayoutPanel1.TabIndex = 5;
+            // 
             // Title
             // 
             AutoScaleDimensions = new SizeF(7F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(434, 411);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(Setting_button);
-            Controls.Add(Start_button);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -136,6 +165,8 @@
             Text = "タイトル画面";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -151,5 +182,7 @@
         private ToolStripMenuItem Exit_ToolStrip;
         private ToolStripMenuItem Help_ToolStrip;
         private ToolStripMenuItem Information_ToolStrip;
+        private Button button1;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
