@@ -11,6 +11,7 @@ namespace haiandro
     {
         List<string> deck = new List<string>();
         public int n { get; set; }
+        public int o {get;set;}
         string Mark = "";
         string result = "";
         public void Shuffle()
@@ -38,6 +39,7 @@ namespace haiandro
             }
 
             n = deck.Count -1 ;
+            o = deck.Count - 1;
             Console.WriteLine(n);
 
             for (int i = n; i > 0; i--)
@@ -77,6 +79,11 @@ namespace haiandro
             result = Card_info.Substring(1);
 
             return $"card_{Mark}_{result}";
+        }
+
+        public string What_AllCard()
+        {
+            return (o-n).ToString();
         }
 
         public string What_Mark()
