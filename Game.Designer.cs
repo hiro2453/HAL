@@ -49,10 +49,11 @@
             Result_img = new PictureBox();
             Result_Table = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
             label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            move_pic = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)Left_Card).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Right_Card).BeginInit();
@@ -62,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)Result_img).BeginInit();
             Result_Table.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)move_pic).BeginInit();
             SuspendLayout();
             // 
             // High_button
@@ -111,7 +113,6 @@
             Answer_label.TabIndex = 4;
             Answer_label.Text = "どっち？";
             Answer_label.TextAlign = ContentAlignment.MiddleCenter;
-            Answer_label.TextChanged += battle;
             // 
             // card_num1
             // 
@@ -333,29 +334,17 @@
             tableLayoutPanel2.Size = new Size(156, 21);
             tableLayoutPanel2.TabIndex = 19;
             // 
-            // label4
+            // label7
             // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            label4.AutoSize = true;
-            label4.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label4.Location = new Point(3, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(19, 21);
-            label4.TabIndex = 0;
-            label4.Text = "1";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label5.Location = new Point(28, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(18, 21);
-            label5.TabIndex = 1;
-            label5.Text = "/";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            label7.AutoSize = true;
+            label7.Dock = DockStyle.Left;
+            label7.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            label7.Location = new Point(95, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(58, 21);
+            label7.TabIndex = 3;
+            label7.Text = "かいめ";
+            label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
@@ -369,17 +358,42 @@
             label6.Text = "530";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // label5
             // 
-            label7.AutoSize = true;
-            label7.Dock = DockStyle.Left;
-            label7.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label7.Location = new Point(95, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(58, 21);
-            label7.TabIndex = 3;
-            label7.Text = "かいめ";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
+            label5.AutoSize = true;
+            label5.Dock = DockStyle.Fill;
+            label5.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            label5.Location = new Point(28, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(18, 21);
+            label5.TabIndex = 1;
+            label5.Text = "/";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            label4.AutoSize = true;
+            label4.Font = new Font("游ゴシック", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            label4.Location = new Point(3, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(19, 21);
+            label4.TabIndex = 0;
+            label4.Text = "1";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // move_pic
+            // 
+            move_pic.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            move_pic.Image = (Image)resources.GetObject("move_pic.Image");
+            move_pic.Location = new Point(313, 238);
+            move_pic.Margin = new Padding(15, 3, 15, 3);
+            move_pic.Name = "move_pic";
+            move_pic.Size = new Size(150, 220);
+            move_pic.SizeMode = PictureBoxSizeMode.StretchImage;
+            move_pic.TabIndex = 20;
+            move_pic.TabStop = false;
+            move_pic.Visible = false;
             // 
             // Game
             // 
@@ -387,6 +401,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(434, 531);
+            Controls.Add(move_pic);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(label3);
             Controls.Add(info_label);
@@ -414,6 +429,7 @@
             Result_Table.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)move_pic).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -445,5 +461,6 @@
         private Label label6;
         private Label label5;
         private Label label4;
+        private PictureBox move_pic;
     }
 }

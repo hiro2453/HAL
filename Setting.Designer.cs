@@ -75,18 +75,20 @@
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { StatusLabel });
-            statusStrip1.Location = new Point(0, 346);
+            statusStrip1.Location = new Point(0, 347);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(549, 23);
+            statusStrip1.Size = new Size(549, 22);
             statusStrip1.SizingGrip = false;
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
             // StatusLabel
             // 
+            StatusLabel.Font = new Font("ＭＳ Ｐゴシック", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
             StatusLabel.Name = "StatusLabel";
-            StatusLabel.Size = new Size(152, 18);
+            StatusLabel.Size = new Size(140, 17);
             StatusLabel.Text = "ここに説明が表示されます";
+            StatusLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // Setting
             // 
