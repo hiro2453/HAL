@@ -25,7 +25,7 @@ namespace haiandro
             d.Card_kure();
             card_display();
             card_num1.Text = d.What_number();
-            Battle_AllCount_label.Text = (51 * Properties.Settings.Default.deck_set).ToString();
+            Battle_AllCount_label.Text = (51 * Properties.Settings.Default.set).ToString();
             Start();
         }
 

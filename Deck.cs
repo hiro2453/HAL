@@ -19,7 +19,7 @@ namespace haiandro
             Console.OutputEncoding = Encoding.UTF8;
             deck.Clear();
 
-            for (int i = 0; i < Properties.Settings.Default.deck_set; i++)
+            for (int i = 0; i < Properties.Settings.Default.set; i++)
             {
                 List<string> singleDeck = new List<string>();
                 string[] suits = { "S", "H", "D", "C" };

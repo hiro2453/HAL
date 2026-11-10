@@ -2,10 +2,16 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="haiandro.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="deck_set" Type="System.Int32" Scope="User">
+    <Setting Name="set" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="A_Strong" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Card_ALLCount" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Deck_option" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

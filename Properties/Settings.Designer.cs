@@ -26,12 +26,12 @@ namespace haiandro.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int deck_set {
+        public int set {
             get {
-                return ((int)(this["deck_set"]));
+                return ((int)(this["set"]));
             }
             set {
-                this["deck_set"] = value;
+                this["set"] = value;
             }
         }
         
@@ -44,6 +44,30 @@ namespace haiandro.Properties {
             }
             set {
                 this["A_Strong"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Card_ALLCount {
+            get {
+                return ((bool)(this["Card_ALLCount"]));
+            }
+            set {
+                this["Card_ALLCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Deck_option {
+            get {
+                return ((bool)(this["Deck_option"]));
+            }
+            set {
+                this["Deck_option"] = value;
             }
         }
     }
