@@ -34,7 +34,6 @@
             Left_Card = new PictureBox();
             Answer_label = new Label();
             card_num1 = new Label();
-            button3 = new Button();
             card_num2 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             Right_Card = new PictureBox();
@@ -125,17 +124,6 @@
             card_num1.TabIndex = 5;
             card_num1.Text = "?";
             card_num1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // button3
-            // 
-            button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            button3.Location = new Point(359, 447);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 34);
-            button3.TabIndex = 6;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
-            button3.Visible = false;
             // 
             // card_num2
             // 
@@ -386,7 +374,7 @@
             // 
             move_pic.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             move_pic.Image = (Image)resources.GetObject("move_pic.Image");
-            move_pic.Location = new Point(313, 238);
+            move_pic.Location = new Point(410, 135);
             move_pic.Margin = new Padding(15, 3, 15, 3);
             move_pic.Name = "move_pic";
             move_pic.Size = new Size(150, 220);
@@ -408,7 +396,6 @@
             Controls.Add(Timer_table);
             Controls.Add(Action_table);
             Controls.Add(tableLayoutPanel1);
-            Controls.Add(button3);
             Controls.Add(Answer_label);
             Controls.Add(Result_Table);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -441,7 +428,6 @@
         private PictureBox Left_Card;
         private Label Answer_label;
         private Label card_num1;
-        private Button button3;
         private Label card_num2;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel Action_table;
@@ -453,7 +439,6 @@
         private TableLayoutPanel Timer_table;
         private PictureBox Right_Card;
         private Label label3;
-        private PictureBox pictureBox1;
         private TableLayoutPanel Result_Table;
         private PictureBox Result_img;
         private TableLayoutPanel tableLayoutPanel2;

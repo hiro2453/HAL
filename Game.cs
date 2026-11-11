@@ -13,6 +13,7 @@ namespace haiandro
     public partial class Game : Form
     {
         Deck d = new Deck();
+        int battle_Count = 0;
         bool Answer = false;
         bool High = false;
         bool Low = false;
@@ -21,6 +22,16 @@ namespace haiandro
         {
             InitializeComponent();
             Result_Table.Visible = true;
+            if (Properties.Settings.Default.Deck_option)
+            {
+                battle_Count = Properties.Settings.Default.set * 51;
+                Battle_AllCount_label.Text = battle_Count.ToString();
+            }
+            if (Properties.Settings.Default.Card_ALLCount)
+            {
+                battle_Count = Properties.Settings.Default.set;
+                Battle_AllCount_label.Text = battle_Count.ToString();
+            }
             d.Shuffle();
             d.Card_kure();
             card_display();
@@ -28,7 +39,8 @@ namespace haiandro
             Battle_AllCount_label.Text = (51 * Properties.Settings.Default.set).ToString();
             Start();
         }
-
+        
+        #region 勝負開始
         public async void Start()
         {
             if (battle_Count_label.Text == Battle_AllCount_label.Text)
@@ -41,7 +53,9 @@ namespace haiandro
             await countdown();
             battle_Count_label.Text = d.What_AllCard();
         }
-
+        #endregion
+        
+        #region カウントダウン処理
         private async Task countdown()
         {
             Timer_table.Visible = true;
@@ -86,7 +100,9 @@ namespace haiandro
                 Console.WriteLine("時間切れ");
             }
         }
+        #endregion
 
+        #region カードを表示する処理
         private void card_display()
         {
             string image_name = d.Card_kure();
@@ -94,7 +110,9 @@ namespace haiandro
             Left_Card.Image = img;
             card_num1.Text = d.What_number();
         }
+        #endregion
 
+        #region 「High」か「Low」を押した処理
         private void button_Click(object sender, EventArgs e)
         {
             if (sender is Control control)
@@ -113,7 +131,9 @@ namespace haiandro
                 Answer_label.Text = controlName;
             }
         }
+        #endregion
 
+        #region 勝負する処理
         private async void battle()
         {
             //色々な処理
@@ -207,10 +227,24 @@ namespace haiandro
             }
 
             await Task.Delay(1000);
+            if (int.Parse(Battle_AllCount_label.Text) ==int.Parse(battle_Count_label.Text))
+            {
+                Answer_label.Text = "そこまで！";
+                await Task.Delay (1000);
+                DialogResult check = MessageBox.Show($"当たった回数：\nドローの回数：", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                using (var Result_window = new Result())
+                {
+                    Result_window.ShowDialog();
+                }
+                this.Close();
+            }
             await Move_card(Right_Card.Image);
             Start();
-
         }
+        #endregion
+
+        #region 「あたり」「はずれ」「ドロー」を表示する処理
         private async Task Result_display(char Check)
         {
             Result_Table.Visible = true;
@@ -248,6 +282,9 @@ namespace haiandro
                 Result_img.Size = new Size(120, Width);
             }
         }
+        #endregion
+
+        #region 右のカードを左に移動する処理
         private async Task Move_card(Image img)
         {
             move_pic.Image = img;
@@ -267,6 +304,8 @@ namespace haiandro
             move_pic.Visible= false;
 
         }
+        #endregion
+
         private void Game_Load(object sender, EventArgs e)
         {
 
