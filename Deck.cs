@@ -38,7 +38,7 @@ namespace haiandro
                 Console.WriteLine($">> {deck.Count}");
             }
 
-            n = deck.Count -1 ;
+            n = deck.Count - 1;
             o = deck.Count - 1;
             Console.WriteLine(n);
 
@@ -52,8 +52,6 @@ namespace haiandro
         public string Card_kure()
         {
             string card = deck[n];
-            
-            n--;
             
             char[] test = card.ToCharArray();
             switch (test[0])
@@ -77,6 +75,8 @@ namespace haiandro
 
             //１文字目以降を取得
             result = Card_info.Substring(1);
+
+            n--;
 
             return $"card_{Mark}_{result}";
         }
