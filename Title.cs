@@ -14,10 +14,7 @@ namespace haiandro
 
         private void Information_ToolStrip_Click(object sender, EventArgs e)
         {
-            using (var Information_window = new About())
-            {
-                Information_window.ShowDialog();
-            }
+
         }
 
         private void Start_button_Click(object sender, EventArgs e)
