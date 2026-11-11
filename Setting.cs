@@ -16,6 +16,9 @@ namespace haiandro
         {
             InitializeComponent();
             A_check.Checked = Properties.Settings.Default.A_Strong ? true : false;
+            Radio_Deck.Checked = Properties.Settings.Default.Deck_option ? true : false;
+            Radio_CardCount.Checked = Properties.Settings.Default.Card_ALLCount ? true : false;
+            numericUpDown1.Value = Properties.Settings.Default.set;
             if (Radio_Deck.Checked)
             {
                 All_battle_Count.Text = (numericUpDown1.Value * 51).ToString();
@@ -58,8 +61,8 @@ namespace haiandro
                 Radio_Deck.Checked = false;
                 numericUpDown1.Maximum = 502;
                 numericUpDown1.Increment = 5;
-                numericUpDown1.Minimum = 10;
-                numericUpDown1.Value = 22;
+                numericUpDown1.Minimum = 12;
+                numericUpDown1.Value = 12;
             }
 
             if (Radio_Deck.Checked)
@@ -105,12 +108,7 @@ namespace haiandro
 
         private void Exit_Check(object sender, FormClosingEventArgs e)
         {
-            DialogResult check = MessageBox.Show("変更が保存されていない可能性があります！\n本当に設定画面を閉じますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (check == DialogResult.OK)
-            {
-                DialogResult = DialogResult.OK;
-            }
+            DialogResult check = MessageBox.Show(this,"変更が保存されていない可能性があります！\n本当に設定画面を閉じますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (check == DialogResult.No)
             {

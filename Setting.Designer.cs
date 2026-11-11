@@ -209,9 +209,11 @@
             Controls.Add(groupBox1);
             Font = new Font("ＭＳ ゴシック", 9F);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "Setting";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "設定画面";
+            TopMost = true;
             FormClosing += Exit_Check;
             MouseHover += info_default;
             groupBox1.ResumeLayout(false);
