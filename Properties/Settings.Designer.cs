@@ -25,7 +25,7 @@ namespace haiandro.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("18")]
+        [global::System.Configuration.DefaultSettingValueAttribute("13")]
         public int set {
             get {
                 return ((int)(this["set"]));
@@ -37,7 +37,7 @@ namespace haiandro.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool A_Strong {
             get {
                 return ((bool)(this["A_Strong"]));
@@ -68,6 +68,18 @@ namespace haiandro.Properties {
             }
             set {
                 this["Deck_option"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int ID {
+            get {
+                return ((int)(this["ID"]));
+            }
+            set {
+                this["ID"] = value;
             }
         }
     }
