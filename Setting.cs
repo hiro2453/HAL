@@ -18,15 +18,9 @@ namespace haiandro
             A_check.Checked = Properties.Settings.Default.A_Strong ? true : false;
             Radio_Deck.Checked = Properties.Settings.Default.Deck_option ? true : false;
             Radio_CardCount.Checked = Properties.Settings.Default.Card_ALLCount ? true : false;
+            Game_Radio_change(this, EventArgs.Empty);
             numericUpDown1.Value = Properties.Settings.Default.set;
-            if (Radio_Deck.Checked)
-            {
-                All_battle_Count.Text = (numericUpDown1.Value * 51).ToString();
-            }
-            if (Radio_CardCount.Checked)
-            {
-                All_battle_Count.Text = (numericUpDown1.Value - 2).ToString();
-            }
+            ValueChanged(this, EventArgs.Empty);
         }
 
         private void info_A(object sender, EventArgs e)
@@ -57,36 +51,38 @@ namespace haiandro
             {
                 Properties.Settings.Default.Card_ALLCount = true;
                 Properties.Settings.Default.Deck_option = false;
-                Game_battle_info.Text = "※12-502以内で設定可能";
+                Game_battle_info.Text = "※1-500以内で設定可能";
                 Radio_Deck.Checked = false;
-                numericUpDown1.Maximum = 502;
+                numericUpDown1.Maximum = 500;
                 numericUpDown1.Increment = 5;
-                numericUpDown1.Minimum = 12;
-                numericUpDown1.Value = 12;
+                numericUpDown1.Minimum = 1;
+                numericUpDown1.Value = Properties.Settings.Default.set;
             }
 
             if (Radio_Deck.Checked)
             {
                 Properties.Settings.Default.Card_ALLCount = false;
                 Properties.Settings.Default.Deck_option = true;
-                Game_battle_info.Text = "※1-10以内で設定可能";
+                Game_battle_info.Text = "※1-15以内で設定可能\n※1デック = 50試合";
                 Radio_CardCount.Checked = false;
-                numericUpDown1.Maximum = 10;
+                numericUpDown1.Maximum = 15;
                 numericUpDown1.Increment = 1;
                 numericUpDown1.Minimum = 1;
-                numericUpDown1.Value = 1;
+                numericUpDown1.Value = Properties.Settings.Default.set;
             }
         }
         private void ValueChanged(object sender, EventArgs e)
         {
             if (Radio_Deck.Checked)
             {
-                All_battle_Count.Text = (numericUpDown1.Value * 51).ToString();
+                All_battle_Count.Text = (numericUpDown1.Value * 50).ToString();
             }
+
             if (Radio_CardCount.Checked)
             {
-                All_battle_Count.Text = (numericUpDown1.Value - 2).ToString();
+                All_battle_Count.Text = (numericUpDown1.Value).ToString();
             }
+            Properties.Settings.Default.set = (int)numericUpDown1.Value;
         }
 
         private void Deck_info(object sender, EventArgs e)
@@ -103,6 +99,7 @@ namespace haiandro
         {
             Properties.Settings.Default.Save();
             MessageBox.Show("保存しました", "確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.FormClosing -= Exit_Check;
             DialogResult = DialogResult.OK;
         }
 
