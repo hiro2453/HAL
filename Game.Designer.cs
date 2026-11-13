@@ -53,6 +53,8 @@
             battle_Slash = new Label();
             battle_Count_label = new Label();
             move_pic = new PictureBox();
+            Point_label = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)Left_Card).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Right_Card).BeginInit();
@@ -129,7 +131,7 @@
             // 
             card_num2.AutoSize = true;
             card_num2.Dock = DockStyle.Fill;
-            card_num2.Font = new Font("游明朝 Demibold", 24F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            card_num2.Font = new Font("游ゴシック", 24F, FontStyle.Bold, GraphicsUnit.Point, 128);
             card_num2.Location = new Point(183, 0);
             card_num2.Name = "card_num2";
             card_num2.Size = new Size(174, 42);
@@ -383,12 +385,39 @@
             move_pic.TabStop = false;
             move_pic.Visible = false;
             // 
+            // Point_label
+            // 
+            Point_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            Point_label.FlatStyle = FlatStyle.System;
+            Point_label.Font = new Font("游ゴシック", 16F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            Point_label.Location = new Point(295, 495);
+            Point_label.Name = "Point_label";
+            Point_label.Size = new Size(100, 23);
+            Point_label.TabIndex = 21;
+            Point_label.Text = "0";
+            Point_label.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.FlatStyle = FlatStyle.System;
+            label5.Font = new Font("游ゴシック", 16F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            label5.Location = new Point(398, 494);
+            label5.Name = "label5";
+            label5.Size = new Size(34, 29);
+            label5.TabIndex = 22;
+            label5.Text = "pt";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // Game
             // 
             AutoScaleDimensions = new SizeF(7F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(434, 531);
+            Controls.Add(label5);
+            Controls.Add(Point_label);
             Controls.Add(move_pic);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(label3);
@@ -398,12 +427,12 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(Answer_label);
             Controls.Add(Result_Table);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Game";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ゲーム画面";
             TopMost = true;
-            Load += Game_Load;
             ((System.ComponentModel.ISupportInitialize)Left_Card).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -447,5 +476,7 @@
         private Label battle_Slash;
         private Label battle_Count_label;
         private PictureBox move_pic;
+        private Label Point_label;
+        private Label label5;
     }
 }
