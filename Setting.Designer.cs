@@ -61,6 +61,7 @@
             // 
             // A_pic
             // 
+            A_pic.BackColor = Color.White;
             A_pic.Image = Properties.Resources.rei1;
             A_pic.Location = new Point(6, 46);
             A_pic.Name = "A_pic";
@@ -184,6 +185,7 @@
             Radio_Deck.TabStop = true;
             Radio_Deck.Text = "デック制";
             Radio_Deck.UseVisualStyleBackColor = true;
+            Radio_Deck.CheckedChanged += Game_Radio_change;
             Radio_Deck.MouseEnter += Deck_info;
             // 
             // Save_Button
@@ -207,6 +209,7 @@
             Controls.Add(groupBox2);
             Controls.Add(statusStrip1);
             Controls.Add(groupBox1);
+            DoubleBuffered = true;
             Font = new Font("ＭＳ ゴシック", 9F);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;

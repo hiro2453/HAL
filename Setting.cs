@@ -57,6 +57,7 @@ namespace haiandro
                 numericUpDown1.Increment = 5;
                 numericUpDown1.Minimum = 1;
                 numericUpDown1.Value = Properties.Settings.Default.set;
+                ValueChanged(this, EventArgs.Empty);
             }
 
             if (Radio_Deck.Checked)
@@ -69,6 +70,7 @@ namespace haiandro
                 numericUpDown1.Increment = 1;
                 numericUpDown1.Minimum = 1;
                 numericUpDown1.Value = Properties.Settings.Default.set;
+                ValueChanged(this, EventArgs.Empty);
             }
         }
         private void ValueChanged(object sender, EventArgs e)
