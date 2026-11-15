@@ -28,161 +28,238 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            Start_button = new Button();
-            Setting_button = new Button();
-            menuStrip1 = new MenuStrip();
-            Game_ToolStrip = new ToolStripMenuItem();
-            GameStart_ToolStrip = new ToolStripMenuItem();
-            Exit_ToolStrip = new ToolStripMenuItem();
-            Help_ToolStrip = new ToolStripMenuItem();
-            Information_ToolStrip = new ToolStripMenuItem();
-            button1 = new Button();
+            Button_Start = new Button();
+            Button_AI = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            menuStrip1.SuspendLayout();
+            Button_Endless = new Button();
+            Button_History = new Button();
+            Pic_LOGO = new PictureBox();
+            Button_Tutorial = new Button();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            Button_Setting = new Button();
+            Link_Label = new LinkLabel();
+            statusStrip1 = new StatusStrip();
+            Info_Label = new ToolStripStatusLabel();
+            label1 = new Label();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Pic_LOGO).BeginInit();
+            tableLayoutPanel2.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
+            // 
+            // Button_Start
+            // 
+            Button_Start.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            Button_Start.AutoSize = true;
+            Button_Start.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            Button_Start.Location = new Point(40, 20);
+            Button_Start.Margin = new Padding(40, 20, 40, 20);
+            Button_Start.Name = "Button_Start";
+            Button_Start.RightToLeft = RightToLeft.No;
+            Button_Start.Size = new Size(100, 34);
+            Button_Start.TabIndex = 1;
+            Button_Start.Text = "一人プレイ";
+            Button_Start.UseVisualStyleBackColor = true;
+            Button_Start.Click += Start_button_Click;
+            Button_Start.MouseEnter += Info_Start;
+            // 
+            // Button_AI
+            // 
+            Button_AI.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            Button_AI.AutoSize = true;
+            Button_AI.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            Button_AI.Location = new Point(40, 94);
+            Button_AI.Margin = new Padding(40, 20, 40, 20);
+            Button_AI.Name = "Button_AI";
+            Button_AI.Size = new Size(100, 34);
+            Button_AI.TabIndex = 4;
+            Button_AI.Text = "AI対戦";
+            Button_AI.UseVisualStyleBackColor = true;
+            Button_AI.Click += button1_Click;
+            Button_AI.MouseEnter += Info_AI;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(Button_Start, 0, 0);
+            tableLayoutPanel1.Controls.Add(Button_AI, 0, 1);
+            tableLayoutPanel1.Controls.Add(Button_Endless, 0, 2);
+            tableLayoutPanel1.Controls.Add(Button_History, 0, 3);
+            tableLayoutPanel1.Location = new Point(242, 12);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.Size = new Size(180, 296);
+            tableLayoutPanel1.TabIndex = 5;
+            // 
+            // Button_Endless
+            // 
+            Button_Endless.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            Button_Endless.AutoSize = true;
+            Button_Endless.Location = new Point(40, 168);
+            Button_Endless.Margin = new Padding(40, 20, 40, 20);
+            Button_Endless.Name = "Button_Endless";
+            Button_Endless.Size = new Size(100, 34);
+            Button_Endless.TabIndex = 6;
+            Button_Endless.Text = "エンドレス";
+            Button_Endless.UseVisualStyleBackColor = true;
+            Button_Endless.MouseEnter += Info_Endless;
+            // 
+            // Button_History
+            // 
+            Button_History.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            Button_History.AutoSize = true;
+            Button_History.Location = new Point(40, 242);
+            Button_History.Margin = new Padding(40, 20, 40, 20);
+            Button_History.Name = "Button_History";
+            Button_History.Size = new Size(100, 34);
+            Button_History.TabIndex = 7;
+            Button_History.Text = "履歴";
+            Button_History.UseVisualStyleBackColor = true;
+            Button_History.MouseEnter += Info_History;
+            // 
+            // Pic_LOGO
+            // 
+            tableLayoutPanel2.SetColumnSpan(Pic_LOGO, 2);
+            Pic_LOGO.Dock = DockStyle.Fill;
+            Pic_LOGO.Image = Properties.Resources.LOGO;
+            Pic_LOGO.Location = new Point(3, 3);
+            Pic_LOGO.Name = "Pic_LOGO";
+            Pic_LOGO.Size = new Size(216, 139);
+            Pic_LOGO.SizeMode = PictureBoxSizeMode.AutoSize;
+            Pic_LOGO.TabIndex = 6;
+            Pic_LOGO.TabStop = false;
+            // 
+            // Button_Tutorial
+            // 
+            Button_Tutorial.Anchor = AnchorStyles.None;
+            Button_Tutorial.AutoSize = true;
+            Button_Tutorial.Location = new Point(25, 242);
+            Button_Tutorial.Name = "Button_Tutorial";
+            Button_Tutorial.Size = new Size(60, 30);
+            Button_Tutorial.TabIndex = 8;
+            Button_Tutorial.Text = "遊び方";
+            Button_Tutorial.UseVisualStyleBackColor = true;
+            Button_Tutorial.MouseEnter += Info_Tutorial;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(Pic_LOGO, 0, 0);
+            tableLayoutPanel2.Controls.Add(Button_Tutorial, 0, 2);
+            tableLayoutPanel2.Controls.Add(Button_Setting, 1, 2);
+            tableLayoutPanel2.Controls.Add(Link_Label, 0, 2);
+            tableLayoutPanel2.Controls.Add(label1, 0, 1);
+            tableLayoutPanel2.Location = new Point(12, 12);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 4;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 145F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
+            tableLayoutPanel2.Size = new Size(222, 296);
+            tableLayoutPanel2.TabIndex = 9;
+            // 
+            // Button_Setting
+            // 
+            Button_Setting.Anchor = AnchorStyles.None;
+            Button_Setting.AutoSize = true;
+            Button_Setting.Location = new Point(136, 242);
+            Button_Setting.Name = "Button_Setting";
+            Button_Setting.Size = new Size(60, 30);
+            Button_Setting.TabIndex = 9;
+            Button_Setting.Text = "設定";
+            Button_Setting.UseVisualStyleBackColor = true;
+            Button_Setting.Click += Setting_button_Click;
+            Button_Setting.MouseEnter += Info_Setting;
+            // 
+            // Link_Label
+            // 
+            Link_Label.Anchor = AnchorStyles.None;
+            Link_Label.AutoSize = true;
+            tableLayoutPanel2.SetColumnSpan(Link_Label, 2);
+            Link_Label.Location = new Point(95, 192);
+            Link_Label.Name = "Link_Label";
+            Link_Label.Size = new Size(32, 18);
+            Link_Label.TabIndex = 10;
+            Link_Label.TabStop = true;
+            Link_Label.Text = "謝辞";
+            Link_Label.TextAlign = ContentAlignment.MiddleCenter;
+            Link_Label.LinkClicked += Link_Click;
+            Link_Label.MouseEnter += Info_Link;
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { Info_Label });
+            statusStrip1.Location = new Point(0, 312);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(434, 23);
+            statusStrip1.SizingGrip = false;
+            statusStrip1.TabIndex = 10;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // Info_Label
+            // 
+            Info_Label.Name = "Info_Label";
+            Info_Label.Size = new Size(296, 18);
+            Info_Label.Text = "ボタンにマウスを置くと、ここに説明が表示されます";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("游ゴシック", 24F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label1.Location = new Point(109, 107);
+            tableLayoutPanel2.SetColumnSpan(label1, 2);
+            label1.Dock = DockStyle.Top;
+            label1.Location = new Point(3, 145);
             label1.Name = "label1";
-            label1.Size = new Size(209, 42);
-            label1.TabIndex = 0;
-            label1.Text = "タイトルロゴ";
-            // 
-            // Start_button
-            // 
-            Start_button.AutoSize = true;
-            Start_button.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            Start_button.Location = new Point(3, 3);
-            Start_button.Name = "Start_button";
-            Start_button.Size = new Size(94, 28);
-            Start_button.TabIndex = 1;
-            Start_button.Text = "一人でプレイ";
-            Start_button.UseVisualStyleBackColor = true;
-            Start_button.Click += Start_button_Click;
-            // 
-            // Setting_button
-            // 
-            Setting_button.AutoSize = true;
-            Setting_button.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            Setting_button.Location = new Point(162, 360);
-            Setting_button.Name = "Setting_button";
-            Setting_button.Size = new Size(102, 28);
-            Setting_button.TabIndex = 2;
-            Setting_button.Text = "設定";
-            Setting_button.UseVisualStyleBackColor = true;
-            Setting_button.Click += Setting_button_Click;
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = SystemColors.Control;
-            menuStrip1.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { Game_ToolStrip, Help_ToolStrip, Information_ToolStrip });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(434, 26);
-            menuStrip1.TabIndex = 3;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // Game_ToolStrip
-            // 
-            Game_ToolStrip.DropDownItems.AddRange(new ToolStripItem[] { GameStart_ToolStrip, Exit_ToolStrip });
-            Game_ToolStrip.Name = "Game_ToolStrip";
-            Game_ToolStrip.Size = new Size(56, 22);
-            Game_ToolStrip.Text = "ゲーム";
-            // 
-            // GameStart_ToolStrip
-            // 
-            GameStart_ToolStrip.Name = "GameStart_ToolStrip";
-            GameStart_ToolStrip.Size = new Size(160, 22);
-            GameStart_ToolStrip.Text = "ゲームスタート";
-            // 
-            // Exit_ToolStrip
-            // 
-            Exit_ToolStrip.Name = "Exit_ToolStrip";
-            Exit_ToolStrip.Size = new Size(160, 22);
-            Exit_ToolStrip.Text = "終了";
-            Exit_ToolStrip.Click += Exit_ToolStrip_Click;
-            // 
-            // Help_ToolStrip
-            // 
-            Help_ToolStrip.Name = "Help_ToolStrip";
-            Help_ToolStrip.Size = new Size(56, 22);
-            Help_ToolStrip.Text = "ヘルプ";
-            // 
-            // Information_ToolStrip
-            // 
-            Information_ToolStrip.Name = "Information_ToolStrip";
-            Information_ToolStrip.Size = new Size(44, 22);
-            Information_ToolStrip.Text = "情報";
-            Information_ToolStrip.Click += Information_ToolStrip_Click;
-            // 
-            // button1
-            // 
-            button1.AutoSize = true;
-            button1.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            button1.Location = new Point(103, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 28);
-            button1.TabIndex = 4;
-            button1.Text = "AIとプレイ";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(button1, 1, 0);
-            tableLayoutPanel1.Controls.Add(Start_button, 0, 0);
-            tableLayoutPanel1.Location = new Point(109, 288);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(200, 38);
-            tableLayoutPanel1.TabIndex = 5;
+            label1.Size = new Size(216, 18);
+            label1.TabIndex = 11;
+            label1.Text = "Ver 1.0.0";
+            label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // Title
             // 
             AutoScaleDimensions = new SizeF(7F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(434, 411);
+            ClientSize = new Size(434, 335);
+            Controls.Add(statusStrip1);
+            Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
-            Controls.Add(Setting_button);
-            Controls.Add(label1);
-            Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            MainMenuStrip = menuStrip1;
             MaximizeBox = false;
             Name = "Title";
             SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "タイトル画面";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Pic_LOGO).EndInit();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private Button Start_button;
-        private Button Setting_button;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem Game_ToolStrip;
-        private ToolStripMenuItem GameStart_ToolStrip;
-        private ToolStripMenuItem Exit_ToolStrip;
-        private ToolStripMenuItem Help_ToolStrip;
-        private ToolStripMenuItem Information_ToolStrip;
-        private Button button1;
+        private Button Button_Start;
+        private Button Button_AI;
         private TableLayoutPanel tableLayoutPanel1;
+        private Button Button_Endless;
+        private Button Button_History;
+        private PictureBox Pic_LOGO;
+        private Button Button_Tutorial;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Button Button_Setting;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel Info_Label;
+        private LinkLabel Link_Label;
+        private Label label1;
     }
 }
