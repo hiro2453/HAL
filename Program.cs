@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using System.Configuration;
 using System.Data;
+using static haiandro.AI;
 namespace haiandro
 {
 	internal static class Program
@@ -15,7 +16,7 @@ namespace haiandro
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
 
-            var connectionString = "Data Source=test.db";
+            var connectionString = "Data Source=History.db";
 
 			using var connection = new SqliteConnection(connectionString);
 			connection.Open();
@@ -24,7 +25,7 @@ namespace haiandro
 						CREATE TABLE IF NOT EXISTS Battle_History (
 							id INTEGER NOT NULL,
 							point INTEGER NOT NULL,
-							Date TEXT NOT NULL
+							date TEXT NOT NULL
 						);";
 
 			using var command = new SqliteCommand(sql, connection);
@@ -57,9 +58,26 @@ namespace haiandro
 
 				Console.WriteLine($"{id}");
 			}
-			
 
-			ApplicationConfiguration.Initialize();
+            string modelPath = "model.zip";
+
+            // 初回のみ学習を実行してモデルを作成
+            if (!File.Exists(modelPath))
+            {
+				Console.WriteLine(">>学習データを作成しています...");
+                ModelTrainer.TrainAndSaveModel(modelPath);
+                Console.WriteLine(">>学習データを作成しました！");
+            }
+
+            // AIを初期化
+            var ai = new HighLowAiPredictor(modelPath);
+
+            // 例：場に「7」が出ていて、山札に高いカードが18枚、低いカードが10枚残っている状況
+            bool isHigher = ai.ShouldBetHigh(currentCard: 7, remainingHighCount: 18, remainingLowCount: 10);
+
+            Console.WriteLine($"7より高いか？ -> {isHigher}"); // true が返る
+
+            ApplicationConfiguration.Initialize();
 			Application.Run(new Title());
 		}
 	}
