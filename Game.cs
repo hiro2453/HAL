@@ -40,7 +40,7 @@ namespace haiandro
             d.Card_kure();
             card_display();
             card_num1.Text = d.What_number();
-            Battle_AllCount_label.Text = "2"; //Properties.Settings.Default.set.ToString();
+            Battle_AllCount_label.Text = Properties.Settings.Default.set.ToString();
             Start();
         }
         
@@ -290,6 +290,8 @@ namespace haiandro
                 command.ExecuteNonQuery();
 
                 MessageBox.Show($"設定試合数まで達しました。\n\nID:{Properties.Settings.Default.ID}\nポイント：{Point_label.Text}\n保存日時：{today}\n\nOKを押すとタイトル画面に戻ります。","結果発表",MessageBoxButtons.OK,MessageBoxIcon.None);
+                Properties.Settings.Default.ID++;
+                Properties.Settings.Default.Save();
                 this.Close();
                 return;
             }
