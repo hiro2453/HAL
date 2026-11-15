@@ -9,18 +9,37 @@
     <AssemblyTitle>High and Low</AssemblyTitle>
     <Authors>Hiroto Nagamizo</Authors>
     <Product>High and low</Product>
-    <Copyright>Hiroto Nagamizo, </Copyright>
+    <Copyright>Hiroto Nagamizo</Copyright>
     <Company>$(licenseUrl)</Company>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>1.2.3.4</AssemblyVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
     <Description>本製品の無断での複製、頒布、貸与、改変、解析（逆コンパイル・逆アセンブル等）を禁じます。
 
 本製品はライセンス契約に基づき提供されています。許諾された範囲外でのご利用は著作権法違反となります。</Description>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="JevSharp" Version="0.2.0" />
+    <None Remove="acknowledgments.rtf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="acknowledgments.rtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="11.0.0" />
+    <PackageReference Include="Microsoft.ML" Version="6.0.0" />
+    <PackageReference Include="Microsoft.ML.FastTree" Version="6.0.0" />
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.5" />
   </ItemGroup>
   <ItemGroup>
