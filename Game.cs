@@ -13,15 +13,67 @@ namespace haiandro
 {
 	public partial class Game : Form
 	{
+		//ウィンドウを閉じたかの確認用
+		bool Form_end = false;
 		Deck d = new Deck();
 		int battle_Count = 0;
 		int now_battle = 0;
 		bool Answer = false;
 		bool High = false;
 		bool Low = false;
+		int Data_id = 0;
 
 		public Game()
 		{
+			// 1. フォルダを指定 -> ファイル名確定 ->SQLiteにdbファイルを指定 -> 接続
+			string folderPath = Path.Combine(Application.StartupPath, "Data");
+			string dbPath = Path.Combine(folderPath, "History.db");
+			var connectionString = $"Data Source={dbPath}";
+			using var connection = new SqliteConnection(connectionString);
+
+			//2.ファイルオープン
+			connection.Open();
+
+			//3.SQL文
+			var sql = "SELECT COUNT(id) FROM Battle_History";
+
+			//4.SQL文を実行
+			using var command = new SqliteCommand(sql, connection);
+			using var reader = command.ExecuteReader();
+
+			//5.出力された列データをひとつずつ読み込み
+			while (reader.Read())
+			{
+				Data_id = reader.GetInt32(0);
+			}
+
+			//6.もう使わないのでファイルクローズ
+			connection.Close();
+
+			Data_id++; //添字対策
+
+			//1.試合データ作成
+			dbPath = Path.Combine(folderPath, $"{Data_id}.db");
+			connectionString = $"Data Source={dbPath}";
+			using var connection2 = new SqliteConnection(connectionString);
+
+			//2.ファイルオープン
+			connection2.Open();
+
+			//3.SQL文
+			sql = @"
+					CREATE TABLE Battle_detail (
+						bc	INTEGER NOT NULL,
+						Guess	TEXT NOT NULL,
+						Answer	TEXT NOT NULL
+					);";
+
+			//4.テーブル作成
+			using var command2 = new SqliteCommand(sql, connection2);
+			command2.ExecuteNonQuery();
+			//ここまでがSQLの操作
+
+
 			InitializeComponent();
 			Result_Table.Visible = true;
 
@@ -43,10 +95,16 @@ namespace haiandro
 			Battle_AllCount_label.Text = Properties.Settings.Default.set.ToString();
 			Start();
 		}
-		
+
 		#region 勝負開始
 		public async void Start()
 		{
+			if (Form_end)
+			{
+				//ウィンドウが閉じられたら処理を実行しないように
+				Console.WriteLine("ウィンドウ閉じられたからもう処理を行わないよ");
+				return;
+			}
 			now_battle++;
 			High = false;
 			Low = false;
@@ -55,7 +113,7 @@ namespace haiandro
 			battle_Count_label.Text = now_battle.ToString();
 		}
 		#endregion
-		
+
 		#region カウントダウン処理
 		private async void countdown()
 		{
@@ -69,6 +127,7 @@ namespace haiandro
 			char[] test = value.ToCharArray();
 			string text = "";
 			card_num1.Text = d.What_number();
+
 			while (progressBar1.Value < progressBar1.Maximum)
 			{
 				if (Answer == true)
@@ -89,8 +148,16 @@ namespace haiandro
 				label1.Text = (5.0m - decimal.Parse(text)).ToString();
 				progressBar1.Value++;
 			}
+
 			if (Answer == true)
 			{
+				return;
+			}
+
+			if (Form_end)
+			{
+				//ウィンドウが閉じられたら処理を実行しないように
+				Console.WriteLine("ウィンドウ閉じられたからもう処理を行わないよ");
 				return;
 			}
 
@@ -100,9 +167,8 @@ namespace haiandro
 			Answer_label.Text = "時間切れ";
 			Action_table.Visible = false;
 			Console.WriteLine("時間切れ");
-			
-			await Task.Delay(1000);
 
+			await Task.Delay(1000);
 			await Card_rool();
 			return;
 		}
@@ -300,6 +366,7 @@ namespace haiandro
 			string sql;
 			int id = 0;
 
+			//id列にいくつ行が何個あるかカウント
 			sql = "SELECT COUNT(id) FROM Battle_History";
 
 			using var command2 = new SqliteCommand(sql, connection);
@@ -390,9 +457,14 @@ namespace haiandro
 
 			Console.WriteLine(img);
 			Left_Card.Image = img;
-			move_pic.Visible= false;
+			move_pic.Visible = false;
 
 		}
 		#endregion
+
+		private void Game_exit(object sender, FormClosingEventArgs e)
+		{
+			Form_end = true;
+		}
 	}
 }
