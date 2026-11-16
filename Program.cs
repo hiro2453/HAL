@@ -45,34 +45,7 @@ namespace haiandro
 			using var command = new SqliteCommand(sql, connection);
 			command.ExecuteNonQuery();
 
-			/*
-			// データ追加
-			sql = "INSERT INTO Battle_History (id, point, Date) VALUES (@id, @point, @Date)";
-			using var command1 = new SqliteCommand(sql, connection);
-
-			string today = DateTime.Now.ToString("yyyy-MM-dd");
-
-			command1.Parameters.AddWithValue("@id", 1);
-			command1.Parameters.AddWithValue("@point", 25);
-			command1.Parameters.AddWithValue("@Date", today);
-
-			command1.ExecuteNonQuery();
-			*/
-
-			
-			// データ読み込み
-			sql = "SELECT COUNT(id) FROM Battle_History";
-
-			using var command2 = new SqliteCommand(sql, connection);
-			using var reader = command2.ExecuteReader();
-
-			while (reader.Read())
-			{
-				var id = reader.GetInt32(0);
-			}
-
-			
-            string modelPath = "model.zip";
+			string modelPath = "model.zip";
 
             // 初回のみ学習を実行してモデルを作成
             if (!File.Exists(modelPath))
