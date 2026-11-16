@@ -432,7 +432,6 @@
             Name = "Game";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ゲーム画面";
-            TopMost = true;
             ((System.ComponentModel.ISupportInitialize)Left_Card).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
