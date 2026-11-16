@@ -23,7 +23,7 @@ namespace haiandro
 
         private void Setting_button_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
 
             using (var Setting_window = new Setting())
             {
@@ -97,6 +97,18 @@ namespace haiandro
         private void Info_Link(object sender, EventArgs e)
         {
             Info_Label.Text = "ライセンス情報を見ることができます";
+        }
+
+        private void Button_History_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            using (var History = new History())
+            {
+                History.ShowDialog();
+            }
+
+            this.Show();
         }
     }
 }

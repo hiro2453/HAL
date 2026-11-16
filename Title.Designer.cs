@@ -38,9 +38,9 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             Button_Setting = new Button();
             Link_Label = new LinkLabel();
+            label1 = new Label();
             statusStrip1 = new StatusStrip();
             Info_Label = new ToolStripStatusLabel();
-            label1 = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Pic_LOGO).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -120,6 +120,7 @@
             Button_History.TabIndex = 7;
             Button_History.Text = "履歴";
             Button_History.UseVisualStyleBackColor = true;
+            Button_History.Click += Button_History_Click;
             Button_History.MouseEnter += Info_History;
             // 
             // Pic_LOGO
@@ -194,6 +195,18 @@
             Link_Label.LinkClicked += Link_Click;
             Link_Label.MouseEnter += Info_Link;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            tableLayoutPanel2.SetColumnSpan(label1, 2);
+            label1.Dock = DockStyle.Top;
+            label1.Location = new Point(3, 145);
+            label1.Name = "label1";
+            label1.Size = new Size(216, 18);
+            label1.TabIndex = 11;
+            label1.Text = "Ver 1.0.0";
+            label1.TextAlign = ContentAlignment.TopCenter;
+            // 
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { Info_Label });
@@ -209,18 +222,6 @@
             Info_Label.Name = "Info_Label";
             Info_Label.Size = new Size(296, 18);
             Info_Label.Text = "ボタンにマウスを置くと、ここに説明が表示されます";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            tableLayoutPanel2.SetColumnSpan(label1, 2);
-            label1.Dock = DockStyle.Top;
-            label1.Location = new Point(3, 145);
-            label1.Name = "label1";
-            label1.Size = new Size(216, 18);
-            label1.TabIndex = 11;
-            label1.Text = "Ver 1.0.0";
-            label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // Title
             // 
