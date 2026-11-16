@@ -73,6 +73,10 @@ namespace haiandro
 			command2.ExecuteNonQuery();
 			//ここまでがSQLの操作
 
+			/*
+			 * 初期でデータベースを作成するコードは組んだけど
+			 * 選択肢ごとのデータを追加するやつはまだだから明日のおれよろしく
+			 */
 
 			InitializeComponent();
 			Result_Table.Visible = true;
