@@ -16,7 +16,19 @@ namespace haiandro
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
 
-            var connectionString = "Data Source=History.db";
+            // 1. 保存したいフォルダのパスを組み立てる（例: exeと同じ階層にある「Data」フォルダ）
+            string folderPath = Path.Combine(Application.StartupPath, "Data");
+
+            // 2. フォルダが存在しない場合は自動で作成する（※これがないとエラーになります）
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            // 3. データベースファイルのフルパスを作成
+            string dbPath = Path.Combine(folderPath, "History.db");
+
+            var connectionString = $"Data Source={dbPath}";
 
 			using var connection = new SqliteConnection(connectionString);
 			connection.Open();
@@ -25,6 +37,8 @@ namespace haiandro
 						CREATE TABLE IF NOT EXISTS Battle_History (
 							id INTEGER NOT NULL,
 							point INTEGER NOT NULL,
+							mode TEXT NOT NULL,
+							battle_set INTEGER NOT NULL,
 							date TEXT NOT NULL
 						);";
 
@@ -47,7 +61,7 @@ namespace haiandro
 
 			
 			// データ読み込み
-			sql = "SELECT COUNT(*) FROM Battle_History";
+			sql = "SELECT COUNT(id) FROM Battle_History";
 
 			using var command2 = new SqliteCommand(sql, connection);
 			using var reader = command2.ExecuteReader();
@@ -55,10 +69,9 @@ namespace haiandro
 			while (reader.Read())
 			{
 				var id = reader.GetInt32(0);
-
-				Console.WriteLine($"{id}");
 			}
 
+			
             string modelPath = "model.zip";
 
             // 初回のみ学習を実行してモデルを作成
@@ -68,7 +81,7 @@ namespace haiandro
                 ModelTrainer.TrainAndSaveModel(modelPath);
                 Console.WriteLine(">>学習データを作成しました！");
             }
-
+			/*
             // AIを初期化
             var ai = new HighLowAiPredictor(modelPath);
 
@@ -76,6 +89,7 @@ namespace haiandro
             bool isHigher = ai.ShouldBetHigh(currentCard: 7, remainingHighCount: 18, remainingLowCount: 10);
 
             Console.WriteLine($"7より高いか？ -> {isHigher}"); // true が返る
+			*/
 
             ApplicationConfiguration.Initialize();
 			Application.Run(new Title());
