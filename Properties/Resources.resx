@@ -301,4 +301,10 @@
   <data name="play_history" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\play_history.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="battle_history" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\battle_history.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="battle_more" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\battle_more.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
