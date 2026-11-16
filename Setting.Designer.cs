@@ -41,20 +41,22 @@
             Radio_CardCount = new RadioButton();
             Radio_Deck = new RadioButton();
             Save_Button = new Button();
+            pictureBox1 = new PictureBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)A_pic).BeginInit();
             statusStrip1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(A_pic);
             groupBox1.Controls.Add(A_check);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(12, 76);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(290, 202);
+            groupBox1.Size = new Size(290, 204);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "カードの強さ";
@@ -86,7 +88,7 @@
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { StatusLabel });
-            statusStrip1.Location = new Point(0, 384);
+            statusStrip1.Location = new Point(0, 447);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(314, 22);
             statusStrip1.SizingGrip = false;
@@ -109,9 +111,9 @@
             groupBox2.Controls.Add(numericUpDown1);
             groupBox2.Controls.Add(Radio_CardCount);
             groupBox2.Controls.Add(Radio_Deck);
-            groupBox2.Location = new Point(12, 220);
+            groupBox2.Location = new Point(12, 284);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(290, 100);
+            groupBox2.Size = new Size(290, 102);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "ゲーム設定";
@@ -121,7 +123,7 @@
             All_battle_Count.Anchor = AnchorStyles.Right;
             All_battle_Count.FlatStyle = FlatStyle.System;
             All_battle_Count.Font = new Font("ＭＳ Ｐゴシック", 12F, FontStyle.Regular, GraphicsUnit.Millimeter);
-            All_battle_Count.Location = new Point(192, 43);
+            All_battle_Count.Location = new Point(192, 44);
             All_battle_Count.Name = "All_battle_Count";
             All_battle_Count.RightToLeft = RightToLeft.Yes;
             All_battle_Count.Size = new Size(82, 46);
@@ -192,19 +194,30 @@
             // 
             Save_Button.AutoSize = true;
             Save_Button.Font = new Font("ＭＳ ゴシック", 12F);
-            Save_Button.Location = new Point(115, 335);
+            Save_Button.Location = new Point(115, 399);
             Save_Button.Name = "Save_Button";
-            Save_Button.Size = new Size(75, 30);
+            Save_Button.Size = new Size(75, 32);
             Save_Button.TabIndex = 3;
             Save_Button.Text = "保存";
             Save_Button.UseVisualStyleBackColor = true;
             Save_Button.Click += Save_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Setting_Logo;
+            pictureBox1.Location = new Point(87, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(131, 51);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // Setting
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(314, 406);
+            ClientSize = new Size(314, 469);
+            Controls.Add(pictureBox1);
             Controls.Add(Save_Button);
             Controls.Add(groupBox2);
             Controls.Add(statusStrip1);
@@ -227,6 +240,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -246,5 +260,6 @@
         private Label All_battle_Count;
         private Label label1;
         private Button Save_Button;
+        private PictureBox pictureBox1;
     }
 }
