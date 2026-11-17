@@ -22,61 +22,72 @@ namespace haiandro
 		bool High = false;
 		bool Low = false;
 		int Data_id = 0;
+		string controlName = "";
+		bool win = false;
+		bool lose = false;
+		bool drow = false;
+		bool timeup = false;
+
 
 		public Game()
 		{
-			// 1. フォルダを指定 -> ファイル名確定 ->SQLiteにdbファイルを指定 -> 接続
-			string folderPath = Path.Combine(Application.StartupPath, "Data");
-			string dbPath = Path.Combine(folderPath, "History.db");
-			var connectionString = $"Data Source={dbPath}";
-			using var connection = new SqliteConnection(connectionString);
+            Properties.Settings.Default.Warning_text = false;
 
-			//2.ファイルオープン
+            #region IDを確定させるためのSQL
+            // 1. フォルダを指定 -> ファイル名確定 ->SQLiteにdbファイルを指定 -> 接続
+            string folderPath = Path.Combine(Application.StartupPath, "Data");
+			string dbPath = Path.Combine(folderPath, "History.db");
+            var connectionString = $"Data Source={dbPath}";
+			using var connection = new SqliteConnection(connectionString);
 			connection.Open();
 
-			//3.SQL文
+			//2.SQL文
 			var sql = "SELECT COUNT(id) FROM Battle_History";
 
-			//4.SQL文を実行
+			//3.SQL文を実行
 			using var command = new SqliteCommand(sql, connection);
 			using var reader = command.ExecuteReader();
 
-			//5.出力された列データをひとつずつ読み込み
+			//4.出力された列データをひとつずつ読み込み
 			while (reader.Read())
 			{
 				Data_id = reader.GetInt32(0);
 			}
 
-			//6.もう使わないのでファイルクローズ
+			//5.もう使わないのでファイルクローズ
 			connection.Close();
 
-			Data_id++; //添字対策
+			#endregion
 
+			#region 試合の詳細を記録するためのSQL
 			//1.試合データ作成
-			dbPath = Path.Combine(folderPath, $"{Data_id}.db");
-			connectionString = $"Data Source={dbPath}";
-			using var connection2 = new SqliteConnection(connectionString);
+			dbPath = Path.Combine(folderPath, $"{Data_id+1}.db");
 
-			//2.ファイルオープン
+            if (File.Exists(dbPath))
+            {
+				File.Delete(dbPath);
+            }
+
+            connectionString = $"Data Source={dbPath}";
+			using var connection2 = new SqliteConnection(connectionString);
 			connection2.Open();
 
-			//3.SQL文
-			sql = @"
-					CREATE TABLE Battle_detail (
+			//2.SQL文
+			sql = @"CREATE TABLE Battle_detail (
 						bc	INTEGER NOT NULL,
 						Guess	TEXT NOT NULL,
-						Answer	TEXT NOT NULL
+						Result	TEXT NOT NULL,
+						Left_Card	INTEGER NOT NULL,
+						Right_Card	INTEGER NOT NULL,
+						select_time	TEXT NOT NULL
 					);";
 
-			//4.テーブル作成
+			//3.テーブル作成
 			using var command2 = new SqliteCommand(sql, connection2);
 			command2.ExecuteNonQuery();
-			//ここまでがSQLの操作
+			connection2.Close();
 
-			/*
-			 * 初期でデータベースを作成するコードは組んだけど
-			 * 選択肢ごとのデータを追加するやつはまだだから明日のおれよろしく
-			 */
+			#endregion
 
 			InitializeComponent();
 			Result_Table.Visible = true;
@@ -110,8 +121,12 @@ namespace haiandro
 				return;
 			}
 			now_battle++;
+			win = false;
+			lose = false;
+			drow = false;
 			High = false;
 			Low = false;
+			timeup = false;
 			Answer = false;
 			countdown();
 			battle_Count_label.Text = now_battle.ToString();
@@ -170,7 +185,7 @@ namespace haiandro
 			progressBar1.Visible = false;
 			Answer_label.Text = "時間切れ";
 			Action_table.Visible = false;
-			Console.WriteLine("時間切れ");
+			timeup = true;
 
 			await Task.Delay(1000);
 			await Card_rool();
@@ -194,8 +209,9 @@ namespace haiandro
 			if (sender is Control control)
 			{
 				// デザイナーで設定した (Name) を取得
-				string controlName = control.Text;
+				controlName = control.Text;
 				Console.WriteLine(controlName);
+
 				switch (controlName)
 				{
 					case "High": High = true; break;
@@ -206,6 +222,7 @@ namespace haiandro
 				Console.WriteLine($">>{Low}");
 				Answer_label.Text = controlName;
 			}
+
 		}
 		#endregion
 
@@ -340,7 +357,55 @@ namespace haiandro
 				}
 			}
 
-			await Task.Delay(1000);
+			string folderPath = Path.Combine(Application.StartupPath, "Data");
+			var dbPath = Path.Combine(folderPath, $"{Data_id + 1}.db");
+			var connectionString = $"Data Source={dbPath}";
+			using var connection = new SqliteConnection(connectionString);
+			connection.Open();
+
+			var sql = "INSERT INTO Battle_detail (bc,Guess,Result,Left_Card,Right_Card,select_time) VALUES (@bc, @Guess, @Result, @Left_Card, @Right_Card, @select_time)";
+			using var command = new SqliteCommand(sql, connection);
+
+			command.Parameters.AddWithValue("@bc", int.Parse(battle_Count_label.Text));
+            if (timeup)
+            {
+                command.Parameters.AddWithValue("@Guess", "未選択");
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@Guess", controlName);
+            }
+
+
+            if (win)
+            {
+                command.Parameters.AddWithValue("@Result", "勝ち");
+            }
+            if (lose)
+            {
+                command.Parameters.AddWithValue("@Result", "負け");
+            }
+            if (drow)
+            {
+                command.Parameters.AddWithValue("@Result", "ひきわけ");
+            }
+
+            command.Parameters.AddWithValue("@Left_Card", int.Parse(card_num1.Text));
+            command.Parameters.AddWithValue("@Right_Card", int.Parse(card_num2.Text));
+
+            if (timeup)
+            {
+                command.Parameters.AddWithValue("@select_time", "時間切れ");
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@select_time", (5.0 - double.Parse(label1.Text)).ToString());
+            }
+
+
+            command.ExecuteNonQuery();
+
+            await Task.Delay(1000);
 
 			if (int.Parse(Battle_AllCount_label.Text) == int.Parse(battle_Count_label.Text))
 			{
@@ -411,13 +476,16 @@ namespace haiandro
 			{
 				case 'w':
 					Result_img.Image = Properties.Resources.WIN;
+					win = true;
 					Point_label.Text = (int.Parse(Point_label.Text) + 1).ToString();
 					break;
 				case 'l':
 					Result_img.Image = Properties.Resources.LOSE;
+					lose = true;
 					break;
 				case 'd':
 					Result_img.Image = Properties.Resources.DRAW;
+					drow = true;
 					break;
 			}
 			Result_img.Visible = true;
@@ -469,6 +537,11 @@ namespace haiandro
 		private void Game_exit(object sender, FormClosingEventArgs e)
 		{
 			Form_end = true;
+            SqliteConnection.ClearAllPools();
+            string folderPath = Path.Combine(Application.StartupPath, "Data");
+            var dbPath = Path.Combine(folderPath, $"{Data_id + 1}.db");
+			File.Delete(dbPath);
+			Properties.Settings.Default.Warning_text = true;
 		}
 	}
 }
