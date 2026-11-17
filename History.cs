@@ -15,10 +15,12 @@ namespace haiandro
 		{
 			InitializeComponent();
 			dataGridView1.Rows.Clear();
-			dataGridView1.AutoGenerateColumns = true;
+			dataGridView1.AutoGenerateColumns = false;
 
-			// 1. 保存したいフォルダのパスを組み立てる（例: exeと同じ階層にある「Data」フォルダ）
-			string folderPath = Path.Combine(Application.StartupPath, "Data");
+            var dt = new DataTable();
+
+            // 1. 保存したいフォルダのパスを組み立てる（例: exeと同じ階層にある「Data」フォルダ）
+            string folderPath = Path.Combine(Application.StartupPath, "Data");
 			string dbPath = Path.Combine(folderPath, "History.db");
 
 			// 2. フォルダが存在しない場合は自動で作成する（※これがないとエラーになります）
@@ -31,16 +33,20 @@ namespace haiandro
 
 			// 3. データベースファイルのフルパスを作成
 			var connectionString = $"Data Source={dbPath}";
-
 			using var connection = new SqliteConnection(connectionString);
 			connection.Open();
+			var sql = "SELECT * FROM Battle_History;";
 
-			var sql = "SELECT * FROM Battle_History";
-
-			using var command2 = new SqliteCommand(sql, connection);
+            using var command2 = new SqliteCommand(sql, connection);
 			using var reader = command2.ExecuteReader();
 
-			while (reader.Read())
+            dt.Load(reader);
+
+			dataGridView1.DataSource= dt;
+
+
+			/*
+            while (reader.Read())
 			{
 				var id = reader.GetInt32(0);
 				var point = reader.GetInt32(1);
@@ -48,7 +54,7 @@ namespace haiandro
 				var battle_count = reader.GetInt32(3);
 				var date = reader.GetString(4);
 				dataGridView1.Rows.Add(id, point, mode, battle_count, date);
-			}
+			}*/
 		}
 
 		private void Cell_Click(object sender, DataGridViewCellEventArgs e)
@@ -59,8 +65,38 @@ namespace haiandro
 				return;
 			}
 
-			// 2. クリックされた行を取得
-			DataGridViewRow clickedRow = dataGridView1.Rows[e.RowIndex];
-		}
+            var dt = new DataTable();
+            dataGridView2.AutoGenerateColumns = false;
+
+            // 2. クリックされた行を取得
+            DataGridViewRow clickedRow = dataGridView1.Rows[e.RowIndex];
+			int Row_num = clickedRow.Index;
+			Row_num++;
+
+            //1.試合データ作成
+            string folderPath = Path.Combine(Application.StartupPath, "Data");
+            string dbPath = Path.Combine(folderPath, $"{Row_num}.db");
+            var connectionString = $"Data Source={dbPath}";
+            using var connection = new SqliteConnection(connectionString);
+
+            //2.ファイルオープン
+            connection.Open();
+
+            var sql = "SELECT * FROM Battle_detail";
+			using var command = new SqliteCommand(sql, connection);
+			using var reader = command.ExecuteReader();
+
+            dt.Load(reader);
+            dataGridView2.DataSource = dt;
+
+			/*
+            while (reader.Read())
+            {
+				var bc = reader.GetInt32(0);
+				var Guess = reader.GetString(1);
+				var Answer = reader.GetString(2);
+				dataGridView2.Rows.Add(bc, Guess, Answer);
+            }*/
+        }
 	}
 }
