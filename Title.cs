@@ -7,6 +7,7 @@ namespace haiandro
         public Title()
         {
             InitializeComponent();
+            Warning_label.Visible = false;
         }
 
         private void Start_button_Click(object sender, EventArgs e)
@@ -16,6 +17,15 @@ namespace haiandro
             using (var Game_window = new Game())
             {
                 Game_window.ShowDialog();
+            }
+
+            if (Properties.Settings.Default.Warning_text)
+            {
+                Warning_label.Visible = true;
+            }
+            else
+            {
+                Warning_label.Visible = false;
             }
 
             this.Show();
