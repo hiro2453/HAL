@@ -82,5 +82,17 @@ namespace haiandro.Properties {
                 this["ID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Warning_text {
+            get {
+                return ((bool)(this["Warning_text"]));
+            }
+            set {
+                this["Warning_text"] = value;
+            }
+        }
     }
 }
