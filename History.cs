@@ -9,43 +9,61 @@ using System.Windows.Forms;
 
 namespace haiandro
 {
-	public partial class History : Form
-	{
-		public History()
-		{
-			InitializeComponent();
-			dataGridView1.Rows.Clear();
-			dataGridView1.AutoGenerateColumns = false;
+    public partial class History : Form
+    {
+        public History()
+        {
+            InitializeComponent();
+            dataGridView1.Rows.Clear();
+            dataGridView1.AutoGenerateColumns = false;
 
             var dt = new DataTable();
 
             // 1. 保存したいフォルダのパスを組み立てる（例: exeと同じ階層にある「Data」フォルダ）
             string folderPath = Path.Combine(Application.StartupPath, "Data");
-			string dbPath = Path.Combine(folderPath, "History.db");
+            string dbPath = Path.Combine(folderPath, "History.db");
 
-			// 2. フォルダが存在しない場合は自動で作成する（※これがないとエラーになります）
-			if (!File.Exists(dbPath))
-			{
-				MessageBox.Show("まだ記録が残っていません。", "データ不在", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				this.Close();
-				return;
-			}
+            // 2. フォルダが存在しない場合は自動で作成する（※これがないとエラーになります）
+            if (!File.Exists(dbPath))
+            {
+                MessageBox.Show("まだ記録が残っていません。", "データ不在", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
 
-			// 3. データベースファイルのフルパスを作成
-			var connectionString = $"Data Source={dbPath}";
-			using var connection = new SqliteConnection(connectionString);
-			connection.Open();
-			var sql = "SELECT * FROM Battle_History;";
+            // 3. データベースファイルのフルパスを作成
+            var connectionString = $"Data Source={dbPath}";
+            using var connection = new SqliteConnection(connectionString);
+            connection.Open();
 
-            using var command2 = new SqliteCommand(sql, connection);
-			using var reader = command2.ExecuteReader();
+            try
+            {
+                var sql = "SELECT * FROM Battle_History;";
 
-            dt.Load(reader);
+                using var command2 = new SqliteCommand(sql, connection);
+                using var reader = command2.ExecuteReader();
 
-			dataGridView1.DataSource= dt;
+                dt.Load(reader);
+
+                dataGridView1.DataSource = dt;
+            }
+            catch (SqliteException ex)
+            {
+                // SQLエラーが起きたときの処理をここに書く
+                Console.WriteLine($"SQLエラーが発生しました: {ex.Message}");
+                Console.WriteLine($"エラーコード: {ex.SqliteErrorCode}");
+                this.Close();
+                // 例：ロールバック処理やログ記録、ユーザーへの通知など
+            }
 
 
-			/*
+            if (dataGridView1.Rows.Count == 0)
+            {
+                timer1.Enabled = true;
+            }
+
+
+            /*
             while (reader.Read())
 			{
 				var id = reader.GetInt32(0);
@@ -55,23 +73,23 @@ namespace haiandro
 				var date = reader.GetString(4);
 				dataGridView1.Rows.Add(id, point, mode, battle_count, date);
 			}*/
-		}
+        }
 
-		private void Cell_Click(object sender, DataGridViewCellEventArgs e)
-		{
-			// 1. 列ヘッダー（一番上の見出し行）がクリックされた場合は何もしない
-			if (e.RowIndex < 0)
-			{
-				return;
-			}
+        private void Cell_Click(object sender, DataGridViewCellEventArgs e)
+        {
+            // 1. 列ヘッダー（一番上の見出し行）がクリックされた場合は何もしない
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
 
             var dt = new DataTable();
             dataGridView2.AutoGenerateColumns = false;
 
             // 2. クリックされた行を取得
             DataGridViewRow clickedRow = dataGridView1.Rows[e.RowIndex];
-			int Row_num = clickedRow.Index;
-			Row_num++;
+            int Row_num = clickedRow.Index;
+            Row_num++;
 
             //1.試合データ作成
             string folderPath = Path.Combine(Application.StartupPath, "Data");
@@ -83,13 +101,13 @@ namespace haiandro
             connection.Open();
 
             var sql = "SELECT * FROM Battle_detail";
-			using var command = new SqliteCommand(sql, connection);
-			using var reader = command.ExecuteReader();
+            using var command = new SqliteCommand(sql, connection);
+            using var reader = command.ExecuteReader();
 
             dt.Load(reader);
             dataGridView2.DataSource = dt;
 
-			/*
+            /*
             while (reader.Read())
             {
 				var bc = reader.GetInt32(0);
@@ -98,5 +116,17 @@ namespace haiandro
 				dataGridView2.Rows.Add(bc, Guess, Answer);
             }*/
         }
-	}
+
+        private void tenmetu(object? sender, EventArgs e)
+        {
+            if (NoMemory_label.Visible)
+            {
+                NoMemory_label.Visible = false;
+            }
+            else
+            {
+                NoMemory_label.Visible = true;
+            }
+        }
+    }
 }

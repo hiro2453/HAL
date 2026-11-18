@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle25 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle26 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle27 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle28 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle29 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle30 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle31 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle32 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             dataGridView1 = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
@@ -45,6 +47,9 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             dataGridView2 = new DataGridView();
+            label1 = new Label();
+            NoMemory_label = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             Battle_count = new DataGridViewTextBoxColumn();
             You_Guess = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
@@ -75,8 +80,8 @@
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(192, 192, 255);
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle25.BackColor = Color.FromArgb(192, 192, 255);
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -95,9 +100,9 @@
             // ID
             // 
             ID.DataPropertyName = "ID";
-            dataGridViewCellStyle9.Format = "N0";
-            dataGridViewCellStyle9.NullValue = "-1";
-            ID.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle26.Format = "N0";
+            dataGridViewCellStyle26.NullValue = "-1";
+            ID.DefaultCellStyle = dataGridViewCellStyle26;
             ID.HeaderText = "ID";
             ID.MinimumWidth = 50;
             ID.Name = "ID";
@@ -108,9 +113,9 @@
             // point
             // 
             point.DataPropertyName = "point";
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = "-1";
-            point.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle27.Format = "N0";
+            dataGridViewCellStyle27.NullValue = "-1";
+            point.DefaultCellStyle = dataGridViewCellStyle27;
             point.HeaderText = "ポイント";
             point.MinimumWidth = 50;
             point.Name = "point";
@@ -129,9 +134,9 @@
             // battle_set
             // 
             battle_set.DataPropertyName = "battle_set";
-            dataGridViewCellStyle11.Format = "N0";
-            dataGridViewCellStyle11.NullValue = "-1";
-            battle_set.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle28.Format = "N0";
+            dataGridViewCellStyle28.NullValue = "-1";
+            battle_set.DefaultCellStyle = dataGridViewCellStyle28;
             battle_set.HeaderText = "試合回数";
             battle_set.MinimumWidth = 50;
             battle_set.Name = "battle_set";
@@ -184,6 +189,34 @@
             dataGridView2.TabIndex = 5;
             dataGridView2.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(255, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(418, 45);
+            label1.TabIndex = 6;
+            label1.Text = "試合の記録を確認することが出来ます。\r\n「試合記録」でその試合をクリックすると右の「詳細」で細かな情報が見ることが出来ます。\r\n列名にカーソルを当てるとその列の説明が表示されます。";
+            // 
+            // NoMemory_label
+            // 
+            NoMemory_label.AutoSize = true;
+            NoMemory_label.BackColor = SystemColors.ControlDark;
+            NoMemory_label.Font = new Font("HG明朝E", 7F, FontStyle.Regular, GraphicsUnit.Millimeter, 128);
+            NoMemory_label.ForeColor = Color.Red;
+            NoMemory_label.Location = new Point(120, 290);
+            NoMemory_label.Name = "NoMemory_label";
+            NoMemory_label.Size = new Size(236, 27);
+            NoMemory_label.TabIndex = 7;
+            NoMemory_label.Text = "記録がありません";
+            NoMemory_label.TextAlign = ContentAlignment.MiddleCenter;
+            NoMemory_label.Visible = false;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 1000;
+            timer1.Tick += tenmetu;
+            // 
             // Battle_count
             // 
             Battle_count.DataPropertyName = "bc";
@@ -203,9 +236,9 @@
             // Column1
             // 
             Column1.DataPropertyName = "Left_Card";
-            dataGridViewCellStyle12.Format = "N0";
-            dataGridViewCellStyle12.NullValue = "-1";
-            Column1.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle29.Format = "N0";
+            dataGridViewCellStyle29.NullValue = "-1";
+            Column1.DefaultCellStyle = dataGridViewCellStyle29;
             Column1.HeaderText = "左カード";
             Column1.Name = "Column1";
             Column1.ReadOnly = true;
@@ -214,9 +247,9 @@
             // Column2
             // 
             Column2.DataPropertyName = "Right_Card";
-            dataGridViewCellStyle13.Format = "N0";
-            dataGridViewCellStyle13.NullValue = "-1";
-            Column2.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle30.Format = "N0";
+            dataGridViewCellStyle30.NullValue = "-1";
+            Column2.DefaultCellStyle = dataGridViewCellStyle30;
             Column2.HeaderText = "右カード";
             Column2.Name = "Column2";
             Column2.ReadOnly = true;
@@ -225,8 +258,8 @@
             // Result
             // 
             Result.DataPropertyName = "Result";
-            dataGridViewCellStyle14.NullValue = "？";
-            Result.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle31.NullValue = "？";
+            Result.DefaultCellStyle = dataGridViewCellStyle31;
             Result.HeaderText = "結果";
             Result.Name = "Result";
             Result.ReadOnly = true;
@@ -235,6 +268,9 @@
             // Column3
             // 
             Column3.DataPropertyName = "select_time";
+            dataGridViewCellStyle32.Format = "N1";
+            dataGridViewCellStyle32.NullValue = "-1.0";
+            Column3.DefaultCellStyle = dataGridViewCellStyle32;
             Column3.HeaderText = "選択時間";
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
@@ -244,17 +280,26 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
             BackColor = SystemColors.Control;
             ClientSize = new Size(934, 504);
+            Controls.Add(NoMemory_label);
+            Controls.Add(label1);
             Controls.Add(dataGridView2);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(dataGridView1);
             Controls.Add(pictureBox1);
             Font = new Font("Meiryo UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormScreenCaptureMode = ScreenCaptureMode.HideContent;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "History";
+            SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "プレイ履歴";
+            TopMost = true;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -276,6 +321,9 @@
         private DataGridViewTextBoxColumn mode;
         private DataGridViewTextBoxColumn battle_set;
         private DataGridViewTextBoxColumn date;
+        private Label label1;
+        private Label NoMemory_label;
+        private System.Windows.Forms.Timer timer1;
         private DataGridViewTextBoxColumn Battle_count;
         private DataGridViewTextBoxColumn You_Guess;
         private DataGridViewTextBoxColumn Column1;
