@@ -307,4 +307,25 @@
   <data name="battle_more" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\battle_more.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Lose_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sound\Lose.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Win_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sound\Win.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Draw_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sound\Draw.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="History" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\History.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Solo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Solo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Endless" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Endless.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\AI.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

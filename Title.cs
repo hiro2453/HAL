@@ -1,3 +1,4 @@
+using haiandro.Card;
 using System.Diagnostics;
 
 namespace haiandro
@@ -14,7 +15,7 @@ namespace haiandro
         {
             this.Hide();
 
-            using (var Game_window = new Game())
+            using (var Game_window = new Game(false, false))
             {
                 Game_window.ShowDialog();
             }
@@ -116,6 +117,39 @@ namespace haiandro
             using (var History = new History())
             {
                 History.ShowDialog();
+            }
+
+            this.Show();
+        }
+
+        private void Button_Endless_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            using (var Game_window = new Game(true, false))
+            {
+                Game_window.ShowDialog();
+            }
+
+            if (Properties.Settings.Default.Warning_text)
+            {
+                Warning_label.Visible = true;
+            }
+            else
+            {
+                Warning_label.Visible = false;
+            }
+
+            this.Show();
+        }
+
+        private void Button_Tutorial_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            using (var Tutorial = new Tutorial())
+            {
+                Tutorial.ShowDialog();
             }
 
             this.Show();
