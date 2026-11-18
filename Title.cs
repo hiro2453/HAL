@@ -1,158 +1,196 @@
 using haiandro.Card;
+using Microsoft.VisualBasic.Logging;
 using System.Diagnostics;
 
 namespace haiandro
 {
-    public partial class Title : Form
-    {
-        public Title()
-        {
-            InitializeComponent();
-            Warning_label.Visible = false;
-        }
+	public partial class Title : Form
+	{
 
-        private void Start_button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+		public Title()
+		{
+			InitializeComponent();
+			Warning_label.Visible = false;
+		}
 
-            using (var Game_window = new Game(false, false))
-            {
-                Game_window.ShowDialog();
-            }
+		private void Setting_button_Click(object sender, EventArgs e)
+		{
+			this.Hide();
 
-            if (Properties.Settings.Default.Warning_text)
-            {
-                Warning_label.Visible = true;
-            }
-            else
-            {
-                Warning_label.Visible = false;
-            }
+			using (var Setting_window = new Setting())
+			{
+				Setting_window.ShowDialog();
+			}
 
-            this.Show();
-        }
+			this.Show();
+		}
 
-        private void Setting_button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+		private void Info_Setting(object sender, EventArgs e)
+		{
+			Info_Label.Text = "ゲーム設定や試合数を変更できます";
+		}
 
-            using (var Setting_window = new Setting())
-            {
-                Setting_window.ShowDialog();
-            }
+		private void Info_Tutorial(object sender, EventArgs e)
+		{
+			Info_Label.Text = "ハイアンドローの遊び方を知れます";
+		}
 
-            this.Show();
-        }
+		private void Link_Click(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			// 実行ファイルと同じ階層にあるファイルのパスを取得
+			string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "acknowledgments.rtf");
+			if (File.Exists(filePath))
+			{
+				try
+				{
+					// .NET Core / .NET 5以降では UseShellExecute = true の指定が必須です
+					Process.Start(new ProcessStartInfo
+					{
+						FileName = filePath,
+						UseShellExecute = true
+					});
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"ファイルを開けませんでした。\n{ex.Message}", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
+			else
+			{
+				MessageBox.Show("ライセンスファイルが見つかりません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+		}
 
-        private async void button1_Click(object sender, EventArgs e)
-        {
+		private void Info_Link(object sender, EventArgs e)
+		{
+			Info_Label.Text = "ライセンス情報を見ることができます";
+		}
 
-        }
+		private void Button_Tutorial_Click(object sender, EventArgs e)
+		{
+			this.Hide();
 
-        private void Info_Start(object sender, EventArgs e)
-        {
-            Info_Label.Text = "一人でプレイします";
-        }
+			using (var Tutorial = new Tutorial())
+			{
+				Tutorial.ShowDialog();
+			}
 
-        private void Info_AI(object sender, EventArgs e)
-        {
-            Info_Label.Text = "AIと対戦します";
-        }
+			this.Show();
+		}
+		
+		private void Button_Hover(object sender, EventArgs e)
+		{
+			if (sender is Control control)
+			{
+				// デザイナーで設定した (Name) を取得
+				string controlName = control.Name;
+				switch (controlName)
+				{
+					case "Pic_start":
+						Info_Label.Text = "一人でプレイします";
+						Pic_start.Image = Properties.Resources.Solo_hover;
+						break;
 
-        private void Info_Endless(object sender, EventArgs e)
-        {
-            Info_Label.Text = "はずれるまで無限に続きます";
-        }
+					case "Pic_AI":
+						Info_Label.Text = "AIと対戦します";
+						Pic_AI.Image = Properties.Resources.AI_hover;
+						break;
 
-        private void Info_History(object sender, EventArgs e)
-        {
-            Info_Label.Text = "これまでプレイした履歴が見れます";
-        }
+					case "Pic_endless":
+						Info_Label.Text = "はずれるまで無限に続きます";
+						Pic_endless.Image = Properties.Resources.Endless_hover;
+						break;
 
-        private void Info_Setting(object sender, EventArgs e)
-        {
-            Info_Label.Text = "ゲーム設定や試合数を変更できます";
-        }
+					case "Pic_History":
+						Info_Label.Text = "これまでプレイした履歴が見れます";
+						Pic_History.Image = Properties.Resources.History_hover;
+						break;
+				}
+			}
+		}
 
-        private void Info_Tutorial(object sender, EventArgs e)
-        {
-            Info_Label.Text = "ハイアンドローの遊び方を知れます";
-        }
+		private void Button_Leave(object sender, EventArgs e)
+		{
+			if (sender is Control control)
+			{
+				// デザイナーで設定した (Name) を取得
+				string controlName = control.Name;
+				switch (controlName)
+				{
+					case "Pic_start":
+						Pic_start.Image = Properties.Resources.Solo;
+						break;
 
-        private void Link_Click(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // 実行ファイルと同じ階層にあるファイルのパスを取得
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "acknowledgments.rtf");
-            if (File.Exists(filePath))
-            {
-                try
-                {
-                    // .NET Core / .NET 5以降では UseShellExecute = true の指定が必須です
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = filePath,
-                        UseShellExecute = true
-                    });
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"ファイルを開けませんでした。\n{ex.Message}", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("ライセンスファイルが見つかりません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+					case "Pic_AI":
+						Pic_AI.Image = Properties.Resources.AI;
+						break;
 
-        private void Info_Link(object sender, EventArgs e)
-        {
-            Info_Label.Text = "ライセンス情報を見ることができます";
-        }
+					case "Pic_endless":
+						Pic_endless.Image = Properties.Resources.Endless;
+						break;
 
-        private void Button_History_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+					case "Pic_History":
+						Pic_History.Image = Properties.Resources.History;
+						break;
+				}
+			}
+		}
 
-            using (var History = new History())
-            {
-                History.ShowDialog();
-            }
+		private void Button_click(object sender, EventArgs e)
+		{
+			if (sender is Control control)
+			{
+				// デザイナーで設定した (Name) を取得
+				string controlName = control.Name;
 
-            this.Show();
-        }
+				this.Hide();
+				switch (controlName)
+				{
+					case "Pic_start":
+						using (var Game_window = new Game(false, false))
+						{
+							Game_window.ShowDialog();
+						}
 
-        private void Button_Endless_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+						if (Properties.Settings.Default.Warning_text)
+						{
+							Warning_label.Visible = true;
+						}
+						else
+						{
+							Warning_label.Visible = false;
+						}
+						break;
 
-            using (var Game_window = new Game(true, false))
-            {
-                Game_window.ShowDialog();
-            }
+					case "Pic_AI":
+						break;
 
-            if (Properties.Settings.Default.Warning_text)
-            {
-                Warning_label.Visible = true;
-            }
-            else
-            {
-                Warning_label.Visible = false;
-            }
+					case "Pic_endless":
+						using (var Game_window = new Game(true, false))
+						{
+							Game_window.ShowDialog();
+						}
 
-            this.Show();
-        }
+						if (Properties.Settings.Default.Warning_text)
+						{
+							Warning_label.Visible = true;
+						}
+						else
+						{
+							Warning_label.Visible = false;
+						}
+						break;
 
-        private void Button_Tutorial_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+					case "Pic_History":
+						using (var History = new History())
+						{
+							History.ShowDialog();
+						}
+						break;
+				}
 
-            using (var Tutorial = new Tutorial())
-            {
-                Tutorial.ShowDialog();
-            }
-
-            this.Show();
-        }
-    }
+				this.Show();
+			}
+		}
+	}
 }
