@@ -1,13 +1,15 @@
 ﻿using Microsoft.Data.Sqlite;
-using System;
+using NAudio.Wave;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace haiandro
 {
@@ -15,6 +17,7 @@ namespace haiandro
 	{
 		//ウィンドウを閉じたかの確認用
 		bool Form_end = false;
+		bool End_Game = false;
 		Deck d = new Deck();
 		int battle_Count = 0;
 		int now_battle = 0;
@@ -27,17 +30,30 @@ namespace haiandro
 		bool lose = false;
 		bool drow = false;
 		bool timeup = false;
+		bool Endless = false;
+		int card_count = 0;
+        AudioFileReader Audio_win = new AudioFileReader(Properties.Resources.Win_audio);
+        AudioFileReader Audio_lose = new AudioFileReader(Properties.Resources.Lose_audio);
+        AudioFileReader Audio_draw = new AudioFileReader(Properties.Resources.Draw_audio);
+        WaveOut AW = new WaveOut();
+        WaveOut AL = new WaveOut();
+        WaveOut AD = new WaveOut();
 
-
-		public Game()
+        public Game(bool END,bool AI)
 		{
-            Properties.Settings.Default.Warning_text = false;
+			Properties.Settings.Default.Warning_text = false;
+			Endless= END;
+
+			AW.Init(Audio_win);
+			AL.Init(Audio_lose);
+			AD.Init(Audio_draw);
+            
 
             #region IDを確定させるためのSQL
             // 1. フォルダを指定 -> ファイル名確定 ->SQLiteにdbファイルを指定 -> 接続
             string folderPath = Path.Combine(Application.StartupPath, "Data");
 			string dbPath = Path.Combine(folderPath, "History.db");
-            var connectionString = $"Data Source={dbPath}";
+			var connectionString = $"Data Source={dbPath}";
 			using var connection = new SqliteConnection(connectionString);
 			connection.Open();
 
@@ -63,12 +79,12 @@ namespace haiandro
 			//1.試合データ作成
 			dbPath = Path.Combine(folderPath, $"{Data_id+1}.db");
 
-            if (File.Exists(dbPath))
-            {
+			if (File.Exists(dbPath))
+			{
 				File.Delete(dbPath);
-            }
+			}
 
-            connectionString = $"Data Source={dbPath}";
+			connectionString = $"Data Source={dbPath}";
 			using var connection2 = new SqliteConnection(connectionString);
 			connection2.Open();
 
@@ -92,22 +108,10 @@ namespace haiandro
 			InitializeComponent();
 			Result_Table.Visible = true;
 
-			if (Properties.Settings.Default.Deck_option)
-			{
-				battle_Count = Properties.Settings.Default.set * 51;
-				Battle_AllCount_label.Text = battle_Count.ToString();
-			}
-			if (Properties.Settings.Default.Card_ALLCount)
-			{
-				battle_Count = Properties.Settings.Default.set;
-				Battle_AllCount_label.Text = battle_Count.ToString();
-			}
-
 			d.Shuffle();
 			d.Card_kure();
 			card_display();
 			card_num1.Text = d.What_number();
-			Battle_AllCount_label.Text = Properties.Settings.Default.set.ToString();
 			Start();
 		}
 
@@ -120,6 +124,14 @@ namespace haiandro
 				Console.WriteLine("ウィンドウ閉じられたからもう処理を行わないよ");
 				return;
 			}
+
+			card_count = int.Parse(d.What_AllCard());
+			if(card_count == 0)
+			{
+				d.Shuffle();
+				Console.WriteLine("[デバッグ] > カードが無くなったため、追加で補完しました");
+			}
+
 			now_battle++;
 			win = false;
 			lose = false;
@@ -129,7 +141,26 @@ namespace haiandro
 			timeup = false;
 			Answer = false;
 			countdown();
-			battle_Count_label.Text = now_battle.ToString();
+            if (!Endless)
+            {
+                if (Properties.Settings.Default.Deck_option)
+                {
+                    battle_Count = Properties.Settings.Default.set * 51;
+                }
+                if (Properties.Settings.Default.Card_ALLCount)
+                {
+                    battle_Count = Properties.Settings.Default.set;
+                }
+                Battle_AllCount_label.Text = battle_Count.ToString();
+                battle_Count_label.Text = now_battle.ToString();
+            }
+            else
+            {
+                battle_Count_label.Visible = false;
+                battle_Slash.Text = "エンドレスモード";
+                Battle_AllCount_label.Visible = false;
+                battle_kaime.Visible = false;
+            }
 		}
 		#endregion
 
@@ -266,6 +297,7 @@ namespace haiandro
 		#region 勝負する処理
 		private async void battle()
 		{
+
 			//色々な処理
 			Answer = true;
 			Timer_table.Visible = false;
@@ -317,7 +349,6 @@ namespace haiandro
 			}
 
 			card_num2.Text = d.What_number();
-			Console.WriteLine($"[デバック]左は{card_num1.Text}です。右は{card_num2.Text}です");
 
 			//引き分けかの判定
 			if (int.Parse(card_num1.Text) == int.Parse(card_num2.Text))
@@ -367,45 +398,45 @@ namespace haiandro
 			using var command = new SqliteCommand(sql, connection);
 
 			command.Parameters.AddWithValue("@bc", int.Parse(battle_Count_label.Text));
-            if (timeup)
-            {
-                command.Parameters.AddWithValue("@Guess", "未選択");
-            }
-            else
-            {
-                command.Parameters.AddWithValue("@Guess", controlName);
-            }
+			if (timeup)
+			{
+				command.Parameters.AddWithValue("@Guess", "未選択");
+			}
+			else
+			{
+				command.Parameters.AddWithValue("@Guess", controlName);
+			}
 
 
-            if (win)
-            {
-                command.Parameters.AddWithValue("@Result", "勝ち");
-            }
-            if (lose)
-            {
-                command.Parameters.AddWithValue("@Result", "負け");
-            }
-            if (drow)
-            {
-                command.Parameters.AddWithValue("@Result", "ひきわけ");
-            }
+			if (win)
+			{
+				command.Parameters.AddWithValue("@Result", "勝ち");
+			}
+			if (lose)
+			{
+				command.Parameters.AddWithValue("@Result", "負け");
+			}
+			if (drow)
+			{
+				command.Parameters.AddWithValue("@Result", "ひきわけ");
+			}
 
-            command.Parameters.AddWithValue("@Left_Card", int.Parse(card_num1.Text));
-            command.Parameters.AddWithValue("@Right_Card", int.Parse(card_num2.Text));
+			command.Parameters.AddWithValue("@Left_Card", int.Parse(card_num1.Text));
+			command.Parameters.AddWithValue("@Right_Card", int.Parse(card_num2.Text));
 
-            if (timeup)
-            {
-                command.Parameters.AddWithValue("@select_time", "時間切れ");
-            }
-            else
-            {
-                command.Parameters.AddWithValue("@select_time", (5.0 - double.Parse(label1.Text)).ToString());
-            }
+			if (timeup)
+			{
+				command.Parameters.AddWithValue("@select_time", "時間切れ");
+			}
+			else
+			{
+				command.Parameters.AddWithValue("@select_time", (5.0 - double.Parse(label1.Text)).ToString());
+			}
 
 
-            command.ExecuteNonQuery();
+			command.ExecuteNonQuery();
 
-            await Task.Delay(1000);
+			await Task.Delay(1000);
 
 			if (int.Parse(Battle_AllCount_label.Text) == int.Parse(battle_Count_label.Text))
 			{
@@ -413,7 +444,13 @@ namespace haiandro
 				return;
 			}
 
-			await Move_card(Right_Card.Image);
+            if (Endless && lose)
+            {
+                await Game_end();
+                return;
+            }
+
+            await Move_card(Right_Card.Image);
 			Start();
 		}
 		#endregion
@@ -452,17 +489,36 @@ namespace haiandro
 
 			string today = DateTime.Now.ToString("yyyy-MM-dd");
 
-			command.Parameters.AddWithValue("@id", id + 1);
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@id", id + 1);
 			command.Parameters.AddWithValue("@point", int.Parse(Point_label.Text));
-			command.Parameters.AddWithValue("@mode", "シングルプレイ");
+
+			if (!Endless)
+			{
+				command.Parameters.AddWithValue("@mode", "シングルプレイ");
+			}
+			else
+			{
+				command.Parameters.AddWithValue("@mode", "エンドレス");
+			}
+
 			command.Parameters.AddWithValue("@set", Properties.Settings.Default.set);
 			command.Parameters.AddWithValue("@date", today);
 
 			command.ExecuteNonQuery();
 
-			MessageBox.Show($"設定試合数まで達しました。\n\nID:{id + 1}\nポイント：{Point_label.Text}\n保存日時：{today}\n\nOKを押すとタイトル画面に戻ります。", "結果発表", MessageBoxButtons.OK, MessageBoxIcon.None);
+			if (!Endless)
+			{
+				MessageBox.Show($"設定試合数まで達しました。\n\nポイント：{Point_label.Text}\n保存日時：{today}\n\nOKを押すとタイトル画面に戻ります。", "結果発表", MessageBoxButtons.OK, MessageBoxIcon.None);
+			}
+			else
+			{
+				MessageBox.Show($"予想が外れたため終了です。\n\nポイント：{Point_label.Text}\n保存日時：{today}\n\nOKを押すとタイトル画面に戻ります。", "結果発表", MessageBoxButtons.OK, MessageBoxIcon.None);
+			}
+			
 			Properties.Settings.Default.ID++;
 			Properties.Settings.Default.Save();
+			End_Game = true;
 			this.Close();
 			return;
 		}
@@ -472,28 +528,32 @@ namespace haiandro
 		{
 			Result_Table.Visible = true;
 			Result_Table.BringToFront();
-			switch (Check)
+            
+
+            switch (Check)
 			{
 				case 'w':
+					AW.Play();
 					Result_img.Image = Properties.Resources.WIN;
 					win = true;
-					Point_label.Text = (int.Parse(Point_label.Text) + 1).ToString();
-					break;
+                    Point_label.Text = (int.Parse(Point_label.Text) + 1).ToString();
+                    break;
 				case 'l':
+					AL.Play();
 					Result_img.Image = Properties.Resources.LOSE;
-					lose = true;
+                    lose = true;
 					break;
 				case 'd':
+					AD.Play();
 					Result_img.Image = Properties.Resources.DRAW;
-					drow = true;
+                    drow = true;
 					break;
 			}
 			Result_img.Visible = true;
-
-			Result_img.Size = new Size(120, 0);
+            Result_img.Size = new Size(120, 0);
 			int Width = 0;
 
-			while (Result_img.Size.Height < 55)
+            while (Result_img.Size.Height < 55)
 			{
 				Width += 5;
 				await Task.Delay(30);
@@ -536,10 +596,14 @@ namespace haiandro
 
 		private void Game_exit(object sender, FormClosingEventArgs e)
 		{
-			Form_end = true;
-            SqliteConnection.ClearAllPools();
-            string folderPath = Path.Combine(Application.StartupPath, "Data");
-            var dbPath = Path.Combine(folderPath, $"{Data_id + 1}.db");
+            if (End_Game)
+            {
+				return;
+            }
+            Form_end = true;
+			SqliteConnection.ClearAllPools();
+			string folderPath = Path.Combine(Application.StartupPath, "Data");
+			var dbPath = Path.Combine(folderPath, $"{Data_id + 1}.db");
 			File.Delete(dbPath);
 			Properties.Settings.Default.Warning_text = true;
 		}
