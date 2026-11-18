@@ -1,2 +1,5 @@
 SQLでお世話になったサイト
 https://1rion.com/csharp/31
+
+メディアプレイヤー実装方法
+https://lets-csharp.com/windows-media-player-cs/
