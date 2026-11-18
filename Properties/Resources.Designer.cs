@@ -73,6 +73,16 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap AI_hover {
+            get {
+                object obj = ResourceManager.GetObject("AI_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap battle_history {
             get {
                 object obj = ResourceManager.GetObject("battle_history", resourceCulture);
@@ -652,9 +662,29 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap Endless_hover {
+            get {
+                object obj = ResourceManager.GetObject("Endless_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap History {
             get {
                 object obj = ResourceManager.GetObject("History", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap History_hover {
+            get {
+                object obj = ResourceManager.GetObject("History_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -734,6 +764,16 @@ namespace haiandro.Properties {
         internal static System.Drawing.Bitmap Solo {
             get {
                 object obj = ResourceManager.GetObject("Solo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Solo_hover {
+            get {
+                object obj = ResourceManager.GetObject("Solo_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
