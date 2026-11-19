@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle25 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle26 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle27 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle28 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle29 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle30 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle31 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle32 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             dataGridView1 = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
@@ -80,8 +80,8 @@
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle25.BackColor = Color.FromArgb(192, 192, 255);
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(192, 192, 255);
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -100,9 +100,9 @@
             // ID
             // 
             ID.DataPropertyName = "ID";
-            dataGridViewCellStyle26.Format = "N0";
-            dataGridViewCellStyle26.NullValue = "-1";
-            ID.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = "-1";
+            ID.DefaultCellStyle = dataGridViewCellStyle2;
             ID.HeaderText = "ID";
             ID.MinimumWidth = 50;
             ID.Name = "ID";
@@ -113,9 +113,9 @@
             // point
             // 
             point.DataPropertyName = "point";
-            dataGridViewCellStyle27.Format = "N0";
-            dataGridViewCellStyle27.NullValue = "-1";
-            point.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = "-1";
+            point.DefaultCellStyle = dataGridViewCellStyle3;
             point.HeaderText = "ポイント";
             point.MinimumWidth = 50;
             point.Name = "point";
@@ -134,9 +134,9 @@
             // battle_set
             // 
             battle_set.DataPropertyName = "battle_set";
-            dataGridViewCellStyle28.Format = "N0";
-            dataGridViewCellStyle28.NullValue = "-1";
-            battle_set.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = "-1";
+            battle_set.DefaultCellStyle = dataGridViewCellStyle4;
             battle_set.HeaderText = "試合回数";
             battle_set.MinimumWidth = 50;
             battle_set.Name = "battle_set";
@@ -236,9 +236,9 @@
             // Column1
             // 
             Column1.DataPropertyName = "Left_Card";
-            dataGridViewCellStyle29.Format = "N0";
-            dataGridViewCellStyle29.NullValue = "-1";
-            Column1.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = "-1";
+            Column1.DefaultCellStyle = dataGridViewCellStyle5;
             Column1.HeaderText = "左カード";
             Column1.Name = "Column1";
             Column1.ReadOnly = true;
@@ -247,9 +247,9 @@
             // Column2
             // 
             Column2.DataPropertyName = "Right_Card";
-            dataGridViewCellStyle30.Format = "N0";
-            dataGridViewCellStyle30.NullValue = "-1";
-            Column2.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = "-1";
+            Column2.DefaultCellStyle = dataGridViewCellStyle6;
             Column2.HeaderText = "右カード";
             Column2.Name = "Column2";
             Column2.ReadOnly = true;
@@ -258,8 +258,8 @@
             // Result
             // 
             Result.DataPropertyName = "Result";
-            dataGridViewCellStyle31.NullValue = "？";
-            Result.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle7.NullValue = "？";
+            Result.DefaultCellStyle = dataGridViewCellStyle7;
             Result.HeaderText = "結果";
             Result.Name = "Result";
             Result.ReadOnly = true;
@@ -268,9 +268,9 @@
             // Column3
             // 
             Column3.DataPropertyName = "select_time";
-            dataGridViewCellStyle32.Format = "N1";
-            dataGridViewCellStyle32.NullValue = "-1.0";
-            Column3.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle8.Format = "N1";
+            dataGridViewCellStyle8.NullValue = "-1.0";
+            Column3.DefaultCellStyle = dataGridViewCellStyle8;
             Column3.HeaderText = "選択時間";
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
