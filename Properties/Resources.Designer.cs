@@ -751,9 +751,29 @@ namespace haiandro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap Setting_hover {
+            get {
+                object obj = ResourceManager.GetObject("Setting_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap Setting_Logo {
             get {
                 object obj = ResourceManager.GetObject("Setting_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Setting_Title {
+            get {
+                object obj = ResourceManager.GetObject("Setting_Title", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -774,6 +794,26 @@ namespace haiandro.Properties {
         internal static System.Drawing.Bitmap Solo_hover {
             get {
                 object obj = ResourceManager.GetObject("Solo_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Tutorial {
+            get {
+                object obj = ResourceManager.GetObject("Tutorial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Tutorial_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Tutorial_Hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
