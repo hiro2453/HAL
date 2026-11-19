@@ -17,22 +17,14 @@ namespace haiandro
 		{
 			this.Hide();
 
-			using (var Setting_window = new Setting())
-			{
-				Setting_window.ShowDialog();
-			}
+			
 
 			this.Show();
 		}
 
-		private void Info_Setting(object sender, EventArgs e)
-		{
-			Info_Label.Text = "ゲーム設定や試合数を変更できます";
-		}
-
 		private void Info_Tutorial(object sender, EventArgs e)
 		{
-			Info_Label.Text = "ハイアンドローの遊び方を知れます";
+			
 		}
 
 		private void Link_Click(object sender, LinkLabelLinkClickedEventArgs e)
@@ -70,10 +62,7 @@ namespace haiandro
 		{
 			this.Hide();
 
-			using (var Tutorial = new Tutorial())
-			{
-				Tutorial.ShowDialog();
-			}
+			
 
 			this.Show();
 		}
@@ -105,7 +94,17 @@ namespace haiandro
 						Info_Label.Text = "これまでプレイした履歴が見れます";
 						Pic_History.Image = Properties.Resources.History_hover;
 						break;
-				}
+
+					case "Pic_Setting":
+                        Info_Label.Text = "ゲーム設定や試合数を変更できます";
+						Pic_Setting.Image = Properties.Resources.Setting_hover;
+						break;
+
+					case "Pic_Tutorial":
+                        Info_Label.Text = "本アプリの遊び方が見れます（ブラウザが立ち上がります）";
+						Pic_Tutorial.Image = Properties.Resources.Tutorial_Hover;
+						break;
+                }
 			}
 		}
 
@@ -132,7 +131,15 @@ namespace haiandro
 					case "Pic_History":
 						Pic_History.Image = Properties.Resources.History;
 						break;
-				}
+
+					case "Pic_Setting":
+						Pic_Setting.Image = Properties.Resources.Setting_Title;
+						break;
+
+                    case "Pic_Tutorial":
+                        Pic_Tutorial.Image = Properties.Resources.Tutorial;
+                        break;
+                }
 			}
 		}
 
@@ -187,7 +194,32 @@ namespace haiandro
 							History.ShowDialog();
 						}
 						break;
-				}
+
+					case "Pic_Setting":
+                        using (var Setting_window = new Setting())
+                        {
+                            Setting_window.ShowDialog();
+                        }
+						break;
+
+					case "Pic_Tutorial":
+                        string url = "https://hiro2453.github.io/HAL_T"; // アクセスしたいURL
+
+                        try
+                        {
+                            // 既定のブラウザでURLを開く
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = url,
+                                UseShellExecute = true
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("ブラウザを開けませんでした: " + ex.Message);
+                        }
+                        break;
+                }
 
 				this.Show();
 			}
